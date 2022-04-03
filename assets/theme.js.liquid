@@ -4314,19 +4314,38 @@ theme.fitNav = function() {
   // Measure children of site nav on load and resize.
   // If wider than parent, switch to mobile nav.
   controlNav();
+  
   theme.cache.$window.on('load', controlNav);
-  // theme.cache.$window.on('resize', theme.debounce(controlNav, 150));
+  theme.cache.$window.on('resize', theme.debounce(controlNav, 150));
 
+  function checkClass() {
+    if(theme.cache.$siteNav.hasClass('site-nav--compress')) {
+      // RESET First
+      theme.cache.$siteNav.removeClass('site-nav--compress');
+      theme.cache.$siteNav.parent().removeClass('large--one-sixth').addClass('large--two-thirds');
+      theme.cache.$siteNavOpen.removeClass('site-nav--open__display');
+      theme.cache.$siteNavOpen.parent().addClass('large--hide');
+      theme.cache.$logoWrapper.parent().removeClass('large--two-thirds').addClass('large--one-third');
+      theme.cache.$logoWrapper.removeClass('text-center').addClass('large--left');
+      theme.cache.$searchBox.show();
+      console.log('reset');
+
+    }
+    return theme.cache.$siteNav.parent().outerWidth() - 20;
+
+  }
+  
   function controlNav() {
     // Subtract 20 from width to account for inline-block spacing
-    var navWidth = theme.cache.$siteNav.parent().outerWidth() - 20;
+    var navWidth = checkClass();
     var navItemWidth = 0;
     theme.cache.$siteNav.find('> li').each(function() {
       var $el = $(this); 
       // Round up to be safe
-      navItemWidth += Math.ceil($(this).width());
+      navItemWidth += Math.ceil($el.width());
     });
-
+    // // console.log(navItemWidth);
+    // console.log(navWidth);
     if (navItemWidth > navWidth) {
       theme.cache.$siteNav.addClass('site-nav--compress');
       theme.cache.$siteNav.parent().removeClass('large--two-thirds').addClass('large--one-sixth');
@@ -4337,9 +4356,16 @@ theme.fitNav = function() {
       theme.cache.$searchBox.hide();
     } else {
       theme.cache.$siteNav.removeClass('site-nav--compress');
+      theme.cache.$siteNav.parent().removeClass('large--one-sixth').addClass('large--two-thirds');
       theme.cache.$siteNavOpen.removeClass('site-nav--open__display');
       theme.cache.$siteNavOpen.parent().addClass('large--hide');
+      theme.cache.$logoWrapper.parent().removeClass('large--two-thirds').addClass('large--one-third');
+      theme.cache.$logoWrapper.removeClass('text-center').addClass('large--left');
       theme.cache.$searchBox.show();
+      // theme.cache.$siteNav.removeClass('site-nav--compress');
+      // theme.cache.$siteNavOpen.removeClass('site-nav--open__display');
+      // theme.cache.$siteNavOpen.parent().addClass('large--hide');
+      // theme.cache.$searchBox.show();
     }
 
     theme.cache.$siteNav.addClass('site-nav--init');

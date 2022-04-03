@@ -1,0 +1,23 @@
+// .grid__item {
+//     @include until(1024px) {
+//         &[role=navigation] {
+//             display: none !important;
+//         }
+        
+//         &.item-logo {
+//             width: 100%!important;
+//         }
+
+//         &.large--hide {
+//             display: table!important;
+//         }
+//     }
+// }
+// .site-nav {
+//     @include until(1085px) {
+//         &__item a {
+//             padding-left: 5px;
+//             padding-right: 5px;
+//         }
+//     }
+// }
