@@ -131,7 +131,7 @@
                 </button>
               </div>
             </div>
-            <div class="grid__item large--one-third medium-down--one-half">
+            <div class="grid__item large--one-tenth medium-down--one-half">
               {% comment %}
                 Use the uploaded logo from theme settings if enabled.
                 Site name gets precedence with H1 tag on homepage, div on other pages.
@@ -166,7 +166,7 @@
                 </div>
               {% endif %}
             </div>
-            <nav class="grid__item large--two-thirds large--text-right medium-down--hide" role="navigation">
+            <nav class="grid__item large--eight-tenths  large--text-center medium-down--hide" role="navigation">
               {% comment %}
                 List out your main-menu linklist (default)
 
@@ -258,7 +258,11 @@
                     </li>
                   {% endif %}
                 {% endfor %}
-
+              </ul>
+              <!-- //site-nav -->
+            </nav>
+            <div class="grid__item large--one-tenth">
+              <div class="site-nav--mobile text-right">
                 {% comment %}
                   Remove comment tags below to add a search box to your header, visible on screens where your header menu
                   is displayed inline.
@@ -267,7 +271,6 @@
                   </li>
                 {% endcomment %}
                 {% if shop.customer_accounts_enabled %}
-                  <li class="site-nav__item site-nav__expanded-item site-nav__item--compressed">
                     <a class="site-nav__link site-nav__link--icon" href="{{ routes.account_url }}">
                       <span class="icon-fallback-text">
                         <span class="icon icon-customer" aria-hidden="true"></span>
@@ -280,7 +283,6 @@
                         </span>
                       </span>
                     </a>
-                  </li>
                 {% endif %}
 
                 {% if section.settings.search == 'page' or section.settings.search == 'modal' %}
@@ -288,38 +290,28 @@
                   {% if section.settings.search == 'page' %}
                     {% assign search_modal = false %}
                   {% endif %}
-                  <li class="site-nav__item site-nav__item--compressed">
-                    <a href="{{ routes.search_url }}" class="site-nav__link site-nav__link--icon{% if search_modal %} js-toggle-search-modal{% endif %}" data-mfp-src="#SearchModal">
+                    <a href="{{ routes.search_url }}" class="site-nav__link site-nav__link--icon {% if search_modal %} js-toggle-search-modal{% endif %}" data-mfp-src="#SearchModal">
                       <span class="icon-fallback-text">
                         <span class="icon icon-search" aria-hidden="true"></span>
                         <span class="fallback-text">{{ 'general.search.title' | t }}</span>
                       </span>
                     </a>
-                  </li>
                 {% endif %}
 
-                <li class="site-nav__item site-nav__item--compressed">
-                  <a href="{{ routes.cart_url }}" class="site-nav__link site-nav__link--icon cart-link js-drawer-open-button-right" aria-controls="CartDrawer">
-                    <span class="icon-fallback-text">
-                      <span class="icon icon-cart" aria-hidden="true"></span>
-                      <span class="fallback-text">{{ 'layout.cart.title' | t }}</span>
-                    </span>
-                    <span class="cart-link__bubble{% if cart.item_count > 0 %} cart-link__bubble--visible{% endif %}"></span>
-                  </a>
-                </li>
-
-              </ul>
-              <!-- //site-nav -->
-            </nav>
-            <div class="grid__item large--hide one-quarter">
-              <div class="site-nav--mobile text-right">
-                <a href="{{ routes.cart_url }}" class="site-nav__link cart-link js-drawer-open-button-right" aria-controls="CartDrawer">
+                <a href="{{ routes.cart_url }}" class="site-nav__link site-nav__link--icon cart-link js-drawer-open-button-right" aria-controls="CartDrawer">
                   <span class="icon-fallback-text">
                     <span class="icon icon-cart" aria-hidden="true"></span>
                     <span class="fallback-text">{{ 'layout.cart.title' | t }}</span>
                   </span>
                   <span class="cart-link__bubble{% if cart.item_count > 0 %} cart-link__bubble--visible{% endif %}"></span>
                 </a>
+                <!-- <a href="{{ routes.cart_url }}" class="site-nav__link cart-link js-drawer-open-button-right" aria-controls="CartDrawer">
+                  <span class="icon-fallback-text">
+                    <span class="icon icon-cart" aria-hidden="true"></span>
+                    <span class="fallback-text">{{ 'layout.cart.title' | t }}</span>
+                  </span>
+                  <span class="cart-link__bubble{% if cart.item_count > 0 %} cart-link__bubble--visible{% endif %}"></span>
+                </a> -->
               </div>
             </div>
           </div>

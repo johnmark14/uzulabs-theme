@@ -4315,14 +4315,14 @@ theme.fitNav = function() {
   // If wider than parent, switch to mobile nav.
   controlNav();
   theme.cache.$window.on('load', controlNav);
-  theme.cache.$window.on('resize', theme.debounce(controlNav, 150));
+  // theme.cache.$window.on('resize', theme.debounce(controlNav, 150));
 
   function controlNav() {
     // Subtract 20 from width to account for inline-block spacing
     var navWidth = theme.cache.$siteNav.parent().outerWidth() - 20;
     var navItemWidth = 0;
     theme.cache.$siteNav.find('> li').each(function() {
-      var $el = $(this);
+      var $el = $(this); 
       // Round up to be safe
       navItemWidth += Math.ceil($(this).width());
     });
