@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+<style>
+    .swiper {
+        width: 100%;
+        height: 300px;
+    }
+
+    .swiper-slide {
+        border: 1px solid black;
+    }
+</style>
+<section class="section">
+    <div class="container">
+        {% if section.settings.title != blank %}
+            <div class="section-header text-center">
+                <h2 class="h1 section-header__title is-uppercase is-size-3">{{ section.settings.title | escape }}</h2>
+                <hr class="hr--small">
+            </div>
+        {% endif %}
+    </div>
+    <div class="container">
+        <!-- Slider main container -->
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-1.jpg"></div>
+            <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-2.jpg"></div>
+            <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-3.jpg"></div>
+            <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-5.jpg"></div>
+            <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-6.jpg"></div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+        
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+</section>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        // Navigation arrows
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+            },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+            }
+        }
+    });
+</script>
+{% schema %}
+{
+  "name": "Carousel Showcase",
+  "tag": "section",
+  "class": "Carousel",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Best Sellers"
+    }
+  ],
+  "blocks": [
+     {
+       "name": "Slide",
+       "type": "slide",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image"
+         }
+       ]
+     }
+   ],
+  "presets": [
+     {
+       "name": "Carousel Showcase",
+       "settings": {
+          "title": "Best Sellers" 
+        },
+       "blocks": [
+         {
+           "type": "slide"
+         },
+         {
+           "type": "slide"
+         }
+       ]
+     }
+   ]
+}
+{% endschema %}
