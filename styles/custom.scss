@@ -1,7 +1,9 @@
-@import "utilities/mixins";
+@import "utilities/all";
 @import "helpers/typography";
 @import "helpers/visibility";
 @import "helpers/spacing";
 @import "layout/section";
+@import "grid/columns";
 @import "elements/container";
+@import "elements/image";
 @import "sections/all";
