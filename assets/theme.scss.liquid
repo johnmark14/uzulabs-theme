@@ -1931,15 +1931,15 @@ $shareCountBg: $colorBody;
     margin: 0;
 
     &:not(.shopify-section--full-width) {
-      margin-top: 110px;
+      padding-top: 110px;
     }
   }
 
   .shopify-section {
-    margin-top: $gutter * 3;
+    padding-top: $gutter * 3;
 
     @include at-query($max, $medium) {
-      margin-top: $gutter * 1.5;
+      padding-top: $gutter * 1.5;
     }
   }
 }
@@ -1947,7 +1947,7 @@ $shareCountBg: $colorBody;
 .index-slideshow-section,
 .shopify-section--full-width {
   & + .shopify-section--full-width {
-    margin-top: 0;
+    padding-top: 0;
   }
 }
 
