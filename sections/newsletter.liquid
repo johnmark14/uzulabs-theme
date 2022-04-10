@@ -1,3 +1,11 @@
+{%- liquid
+  assign color_background = section.settings.color_background
+-%}
+<style>
+    #shopify-section-{{ section.id }} {
+      background-color: {{color_background }};
+    }
+</style>
 <div class="newsletter" data-section-id="{{ section.id }}" data-section-type="newsletter-section">
   <div class="wrapper">
     {% unless section.settings.heading == blank %}
@@ -42,8 +50,6 @@
     {% endform %}
   </div>
 </div>
-
-
 
 {% schema %}
 {
@@ -197,6 +203,12 @@
         "zh-CN": "任何注册用户都将在 Shopify 中拥有一个为他们创建的账户。[查看客户](/admin/customers?query=&accepts_marketing=1)",
         "zh-TW": "顧客註冊後就可以擁有 Shopify 帳號。[查看顧客](/admin/customers?query=&accepts_marketing=1)"
       }
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background Color",
+      "default": "#ffffff"
     }
   ],
   "presets": [
