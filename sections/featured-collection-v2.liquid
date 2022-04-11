@@ -1,0 +1,143 @@
+{%- liquid
+  assign color_background = section.settings.color_background
+  assign color_button_label = section.settings.color_button_label
+  assign color_button_background = section.settings.color_button_background
+-%}
+<style>
+    #shopify-section-{{ section.id }} {
+      background-color: {{color_background }};
+    }
+    #shopify-section-{{ section.id }} .column a.btn{
+      color: {{ color_button_label }};
+      background-color: {{ color_button_background }};
+    }
+</style>
+<section class="section">
+    <div class="container">
+        {% if section.settings.title != blank %}
+            <div class="section-header text-center">
+                <h2 class="h1 section-header__title is-uppercase is-size-3">{{ section.settings.title | escape }}</h2>
+                <hr class="hr--small">
+            </div>
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="columns is-multiline is-variable is-7-desktop">
+          {%for block in section.blocks %}
+            {% assign collection = block.settings.collection %}
+            <div class="column is-3-desktop is-half-tablet">
+              {%if collection != blank %}
+                <a href="/collections/{{collection.handle}}">
+                  {% if collection.image %}
+                    <figure class="image is-1by1">
+                      {{ collection.image | image_url: width: 2048 | image_tag: class: 'lazyload fade-in lazypreload'}}
+                    </figure>
+                  {%else%}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endif %}
+                  <div class="product-info has-text-centered">
+                    <p class="title mb-1">{{collection.title}}</p>
+                  </div>
+                </a>
+              {%else%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%endif%}
+            </div>
+          {%endfor%}
+          {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+            <div class="column is-full has-text-centered mt-6">
+              <a href="{{ section.settings.button_link }}" class="btn hero__cta">
+                {{ section.settings.button_label | escape }}
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection V2",
+  "tag": "section",
+  "class": "featured-collection--v2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "How to order"
+    },
+    {
+      "type": "header",
+      "content": "Slide Settings"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "color_button_label",
+      "label": "Button Color Label",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_button_background",
+      "label": "Button Color Background",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "collection",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+     {
+       "name": "Featured Collection V2",
+       "settings": {
+          "title": "All of our products are uniquely YOU." 
+        },
+        "blocks": [
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          }
+        ]
+      }
+   ]
+}
+{% endschema %}
