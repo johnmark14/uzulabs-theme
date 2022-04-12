@@ -16,8 +16,10 @@
     <div class="container">
         {% if section.settings.title != blank %}
             <div class="section-header text-center">
-                <h2 class="h1 section-header__title is-uppercase is-size-3">{{ section.settings.title | escape }}</h2>
-                <hr class="hr--small">
+                <h2 class="h1 section-header__title is-uppercase is-size-4">{{ section.settings.title | escape }}</h2>
+                {%unless section.settings.hide_rule == true%}
+                  <hr class="hr--small">
+                {%endunless%}
             </div>
         {% endif %}
     </div>
@@ -66,6 +68,12 @@
       "id": "title",
       "label": "Section Title",
       "default": "How to order"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_rule",
+      "label": "Hide Horizontal Rule?",
+      "default": false
     },
     {
       "type": "header",

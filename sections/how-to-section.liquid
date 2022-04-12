@@ -11,8 +11,10 @@
     <div class="container">
         {% if section.settings.title != blank %}
             <div class="section-header text-center">
-                <h2 class="h1 section-header__title is-uppercase is-size-3">{{ section.settings.title | escape }}</h2>
-                <hr class="hr--small">
+                <h2 class="h1 section-header__title is-uppercase is-size-4">{{ section.settings.title | escape }}</h2>
+                {%unless section.settings.hide_rule == true%}
+                  <hr class="hr--small">
+                {%endunless%}
             </div>
         {% endif %}
     </div>
@@ -27,8 +29,8 @@
               {%endif%}
             </figure>
             <div class="howto-description has-text-centered mt-5">
-              <font class="title is-size-4 is-uppercase">Choose</font>
-              <p class="sub-title has-text-weight-light">Choose a product.</p>
+              <font class="title is-size-5 is-uppercase h6 mb-0">Choose</font>
+              <p class="sub-title has-text-weight-light is-size-6">Choose a product.</p>
             </div>
            </div>
            <div class="column is-3">
@@ -40,8 +42,8 @@
               {%endif%}
             </figure>
             <div class="howto-description has-text-centered mt-5">
-              <font class="title is-size-4 is-uppercase">Customize</font>
-              <p class="sub-title has-text-weight-light">Personalize it.</p>
+              <font class="title is-size-5 is-uppercase h6 mb-0">Customize</font>
+              <p class="sub-title has-text-weight-light is-size-6">Personalize it.</p>
             </div>
           </div>
           <div class="column is-3">
@@ -53,8 +55,8 @@
                {%endif%}
              </figure>
              <div class="howto-description has-text-centered mt-5">
-              <font class="title is-size-4 is-uppercase">Order</font>
-              <p class="sub-title has-text-weight-light">Let us work our magic!</p>
+              <font class="title is-size-5 is-uppercase h6 mb-0">Order</font>
+              <p class="sub-title has-text-weight-light is-size-6">Let us work our magic!</p>
             </div>
            </div>
         </div>
@@ -75,6 +77,12 @@
       "id": "title",
       "label": "Section Title",
       "default": "How to order"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_rule",
+      "label": "Hide Horizontal Rule?",
+      "default": false
     },
     {
       "type": "header",
