@@ -32,7 +32,7 @@
               {%if collection != blank %}
                 <a href="/collections/{{collection.handle}}">
                   {% if collection.image %}
-                    <figure class="image is-1by1">
+                    <figure class="image is-4by3">
                       {{ collection.image | image_url: width: 2048 | image_tag: class: 'lazyload fade-in lazypreload'}}
                     </figure>
                   {%else%}
