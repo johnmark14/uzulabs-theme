@@ -1,0 +1,321 @@
+{%- liquid
+  assign color_background = section.settings.color_background
+  assign color_button_label = section.settings.color_button_label
+  assign color_button_background = section.settings.color_button_background
+-%}
+<style>
+    #shopify-section-{{ section.id }} {
+      background-color: {{color_background }};
+    }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+<section class="section">
+  {% if section.settings.title != blank %}
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 class="h1 section-header__title is-uppercase is-size-4">{{ section.settings.title | escape }}</h2>
+            {%unless section.settings.hide_rule == true%}
+              <hr class="hr--small">
+            {%endunless%}
+        </div>
+      </div>
+    {% endif %}
+    <div class="container is-hidden-mobile">
+      {%for block in section.blocks %}
+        <div class="columns is-multiline is-centered is-variable is-3 is-1-mobile is-mobile ">
+          <!-- Image 1 -->
+            <div class="column is-one-quarter-tablet is-half-mobile">
+              {%if block.settings.image_1 != blank %}
+                {%if block.settings.image_url_1 != blank%}
+                <a href="{{block.settings.image_url_1}}">
+                {%endif%}
+                  <figure class="image is-4by5" style="margin: 0;">
+                    <img class="lazyload fade-in lazypreload " src="{{block.settings.image_1 | img_url: 'master'}}" style="object-fit: cover;">
+                  </figure>
+                {%if block.settings.image_url_1 != blank%}
+                </a>
+                {%endif%}
+              {%else%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%endif%}
+            </div>
+          <!-- Image 2 -->
+            <div class="column is-one-quarter-tablet is-half-mobile">
+              {%if block.settings.image_2 != blank %}
+                {%if block.settings.image_url_2 != blank%}
+                <a href="{{block.settings.image_url_2}}">
+                {%endif%}
+                  <figure class="image is-4by5" style="margin: 0;">
+                    <img class="lazyload fade-in lazypreload " src="{{block.settings.image_2 | img_url: 'master'}}" style="object-fit: cover;">
+                  </figure>
+                {%if block.settings.image_url_2 != blank%}
+                </a>
+                {%endif%}
+              {%else%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%endif%}
+            </div>
+          <!-- Image 3 -->
+            <div class="column is-one-quarter-tablet is-half-mobile">
+              {%if block.settings.image_3!= blank %}
+                {%if block.settings.image_url_2 != blank%}
+                <a href="{{block.settings.image_url_3}}">
+                {%endif%}
+                  <figure class="image is-4by5" style="margin: 0;">
+                    <img class="lazyload fade-in lazypreload " src="{{block.settings.image_3 | img_url: 'master'}}" style="object-fit: cover;">
+                  </figure>
+                {%if block.settings.image_url_3 != blank%}
+                </a>
+                {%endif%}
+              {%else%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%endif%}
+            </div>
+        </div>
+      {%endfor%}
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <div class="column is-full has-text-centered mt-6">
+          <a href="{{ section.settings.button_link }}" class="btn hero__cta">
+            {{ section.settings.button_label | escape }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="container is-hidden-tablet">
+      <div class="columns is-multiline is-centered is-variable is-3 is-1-mobile is-mobile ">
+          {%for block in section.blocks %}
+          <!-- Image 1 -->
+            <div class="column is-one-quarter-tablet is-half-mobile">
+              {%if block.settings.image_1 != blank %}
+                {%if block.settings.image_url_1 != blank%}
+                <a href="{{block.settings.image_url_1}}">
+                {%endif%}
+                  <figure class="image is-4by5" style="margin: 0;">
+                    <img class="lazyload fade-in lazypreload " src="{{block.settings.image_1 | img_url: 'master'}}" style="object-fit: cover;">
+                  </figure>
+                {%if block.settings.image_url_1 != blank%}
+                </a>
+                {%endif%}
+              {%else%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%endif%}
+            </div>
+          <!-- Image 2 -->
+            <div class="column is-one-quarter-tablet is-half-mobile">
+              {%if block.settings.image_2 != blank %}
+                {%if block.settings.image_url_2 != blank%}
+                <a href="{{block.settings.image_url_2}}">
+                {%endif%}
+                  <figure class="image is-4by5" style="margin: 0;">
+                    <img class="lazyload fade-in lazypreload " src="{{block.settings.image_2 | img_url: 'master'}}" style="object-fit: cover;">
+                  </figure>
+                {%if block.settings.image_url_2 != blank%}
+                </a>
+                {%endif%}
+              {%else%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%endif%}
+            </div>
+          <!-- Image 3 -->
+            <div class="column is-one-quarter-tablet is-half-mobile">
+              {%if block.settings.image_3!= blank %}
+                {%if block.settings.image_url_2 != blank%}
+                <a href="{{block.settings.image_url_3}}">
+                {%endif%}
+                  <figure class="image is-4by5" style="margin: 0;">
+                    <img class="lazyload fade-in lazypreload " src="{{block.settings.image_3 | img_url: 'master'}}" style="object-fit: cover;">
+                  </figure>
+                {%if block.settings.image_url_3 != blank%}
+                </a>
+                {%endif%}
+              {%else%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%endif%}
+            </div>
+          {%endfor%}
+        </div>
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <div class="column is-full has-text-centered mt-6">
+          <a href="{{ section.settings.button_link }}" class="btn hero__cta">
+            {{ section.settings.button_label | escape }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="container is-hidden-tablet is-hidden-mobile">
+      <!-- Slider main container -->
+      <div id="swiperGallery" class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper is-align-items-flex-end">
+          <!-- Slides -->
+          {% for block in section.blocks %}
+            {% assign collection = block.settings.collection %}
+            {%if collection != blank%}
+              <a href="/collections/{{collection.handle}}" class="swiper-slide">
+                <figure class="image is-1by1">
+                  <img class="lazyload fade-in {% unless forloop.first == true %} lazypreload{% endunless %}" src="{{collection.image | img_url: 'master'}}">
+                </figure>
+                <div class="product-info has-text-centered">
+                  <p class="title mb-1">{{collection.title}}</p>
+                  {%include 'price-on-display'%}
+                </div>
+              </a>
+            {%else%}
+            <div class="swiper-slide">
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            {%endif%}
+          {%endfor%}
+        </div>
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev swiper-button-prev-mobile" style="color: inherit;"></div>
+        <div class="swiper-button-next swiper-button-next-mobile" style="color: inherit;"></div>
+      </div>
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <div class="column is-full has-text-centered mt-6">
+          <a href="{{ section.settings.button_link }}" class="btn hero__cta">
+            {{ section.settings.button_label | escape }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+</section>
+<script>
+  const swiperCollection = new Swiper('#swiperGallery', {
+      // Optional parameters
+      preloadImages: true,
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: true,
+      loopFillGroupWithBlank: true,
+      navigation: {
+        nextEl: '.swiper-button-next-mobile',
+        prevEl: '.swiper-button-prev-mobile',
+      },
+      breakpoints: {
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+        },
+        768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+        }
+      }
+  });
+</script>
+{% schema %}
+{
+  "name": "Gallery",
+  "tag": "section",
+  "class": "gallery-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "How to order"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_rule",
+      "label": "Hide Horizontal Rule?",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Slide Settings"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "color_button_label",
+      "label": "Button Color Label",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_button_background",
+      "label": "Button Color Background",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "gallery",
+      "type": "gallery",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Images"
+        },
+        {
+          "type": "url",
+          "id": "image_url_1",
+          "label": "Image Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Images"
+        },
+        {
+          "type": "url",
+          "id": "image_url_2",
+          "label": "Image Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Images"
+        },
+        {
+          "type": "url",
+          "id": "image_url_3",
+          "label": "Image Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+     {
+       "name": "Gallery",
+       "settings": {
+          "title": "Gallery" 
+        },
+        "blocks": [
+          {
+            "type": "gallery"
+          },
+          {
+            "type": "gallery"
+          }
+        ]
+      }
+   ]
+}
+{% endschema %}
