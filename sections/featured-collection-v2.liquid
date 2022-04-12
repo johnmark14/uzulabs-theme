@@ -12,6 +12,7 @@
       background-color: {{ color_button_background }};
     }
 </style>
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
 <section class="section">
     <div class="container">
         {% if section.settings.title != blank %}
@@ -23,7 +24,7 @@
             </div>
         {% endif %}
     </div>
-    <div class="container">
+    <div class="container is-hidden-mobile">
         <div class="columns is-multiline is-variable is-7-desktop">
           {%for block in section.blocks %}
             {% assign collection = block.settings.collection %}
@@ -55,8 +56,70 @@
           {%- endif -%}
         </div>
     </div>
+    <div class="container is-hidden-tablet">
+      <!-- Slider main container -->
+      <div id="swiperMobile" class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper is-align-items-flex-end">
+          <!-- Slides -->
+          {% for block in section.blocks %}
+            {% assign collection = block.settings.collection %}
+            {%if collection != blank%}
+              <a href="/collections/{{collection.handle}}" class="swiper-slide">
+                <img class="lazyload fade-in {% unless forloop.first == true %} lazypreload{% endunless %}" src="{{collection.image | img_url: 'master'}}">
+                <div class="product-info has-text-centered">
+                  <p class="title mb-1">{{collection.title}}</p>
+                  {%include 'price-on-display'%}
+                </div>
+              </a>
+            {%else%}
+            <div class="swiper-slide">
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            {%endif%}
+          {%endfor%}
+        </div>
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev swiper-button-prev-mobile" style="color: inherit;"></div>
+        <div class="swiper-button-next swiper-button-next-mobile" style="color: inherit;"></div>
+      </div>
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <div class="column is-full has-text-centered mt-6">
+          <a href="{{ section.settings.button_link }}" class="btn hero__cta">
+            {{ section.settings.button_label | escape }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
 </section>
-
+<script>
+  const swiperCollection = new Swiper('#swiperMobile', {
+      // Optional parameters
+      preloadImages: true,
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: true,
+      loopFillGroupWithBlank: true,
+      navigation: {
+        nextEl: '.swiper-button-next-mobile',
+        prevEl: '.swiper-button-prev-mobile',
+      },
+      breakpoints: {
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+        },
+        768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+        }
+      }
+  });
+</script>
 {% schema %}
 {
   "name": "Featured Collection V2",

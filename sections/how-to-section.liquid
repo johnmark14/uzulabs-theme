@@ -20,7 +20,7 @@
     </div>
     <div class="container">
         <div class="columns is-centered is-variable is-7">
-           <div class="column is-3">
+           <div class="column is-3-desktop">
             <figure class="image is-5by4">
               {% if section.settings.image_left != blank %}
                 <img src="{{section.settings.image_left | img_url: 'master'}}" alt="Shop how to image left">
@@ -33,7 +33,7 @@
               <p class="sub-title has-text-weight-light is-size-6">Choose a product.</p>
             </div>
            </div>
-           <div class="column is-3">
+           <div class="column is-3-desktop">
             <figure class="image is-5by4">
               {% if section.settings.image_center != blank %}
                 <img src="{{section.settings.image_center | img_url: 'master'}}" alt="Shop how to image center">
@@ -46,7 +46,7 @@
               <p class="sub-title has-text-weight-light is-size-6">Personalize it.</p>
             </div>
           </div>
-          <div class="column is-3">
+          <div class="column is-3-desktop">
              <figure class="image is-5by4">
                {% if section.settings.image_center != blank %}
                  <img src="{{section.settings.image_right | img_url: 'master'}}" alt="Shop how to image right">
