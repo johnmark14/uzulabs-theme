@@ -58,7 +58,7 @@
     </div>
     <div class="container is-hidden-tablet">
       <!-- Slider main container -->
-      <div id="swiperMobile" class="swiper">
+      <div id="swiperCollection" class="swiper">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper is-align-items-flex-end">
           <!-- Slides -->
@@ -80,8 +80,8 @@
           {%endfor%}
         </div>
         <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev swiper-button-prev-mobile" style="color: inherit;"></div>
-        <div class="swiper-button-next swiper-button-next-mobile" style="color: inherit;"></div>
+        <div class="swiper-button-prev swiper-button-prev-collection" style="color: inherit;"></div>
+        <div class="swiper-button-next swiper-button-next-collection" style="color: inherit;"></div>
       </div>
       {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
         <div class="column is-full has-text-centered mt-6">
@@ -93,7 +93,7 @@
     </div>
 </section>
 <script>
-  const swiperCollection = new Swiper('#swiperMobile', {
+  const swiperCollection = new Swiper('#swiperCollection', {
       // Optional parameters
       preloadImages: true,
       slidesPerView: 1,
@@ -101,8 +101,8 @@
       loop: true,
       loopFillGroupWithBlank: true,
       navigation: {
-        nextEl: '.swiper-button-next-mobile',
-        prevEl: '.swiper-button-prev-mobile',
+        nextEl: '.swiper-button-next-collection',
+        prevEl: '.swiper-button-prev-collection',
       },
       breakpoints: {
         640: {

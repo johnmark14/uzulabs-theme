@@ -3831,6 +3831,17 @@
   }
 }
 
+.carousel-clients section, .carousel-clients .section {
+  padding-top: 10px !important;
+  padding-bottom: 20px !important;
+}
+.carousel-clients .container .section-header {
+  margin-bottom: 10px !important;
+}
+.carousel-clients .container figure.image {
+  margin: 0;
+}
+
 .how-to .section .container .columns .column:not(:last-child) .image {
   position: relative;
 }

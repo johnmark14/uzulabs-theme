@@ -2,10 +2,32 @@
   assign color_background = section.settings.color_background
 -%}
 <style>
-    #shopify-section-{{ section.id }} {
-      background-color: {{color_background }};
-    }
-    
+  #shopify-section-{{ section.id }} {
+    background-color: {{color_background }};
+  }
+
+  .swiper-wrapper {
+    margin-bottom: 30px;
+  }
+  .swiper-pagination-how-to {
+    padding-top: 40px;
+  }
+  .swiper-pagination-bullet {
+    width: 20px !important;
+    height: 20px !important;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color: #000 !important;
+    border-radius: unset !important;
+    opacity: 1 !important;
+    background: none !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    color: #fff !important;
+    background: #000 !important;
+  }
 </style>
 <section class="section">
     <div class="container">
@@ -18,7 +40,7 @@
             </div>
         {% endif %}
     </div>
-    <div class="container">
+    <div class="container is-hidden-mobile">
         <div class="columns is-centered is-variable is-7">
            <div class="column is-3-desktop">
             <figure class="image is-5by4">
@@ -29,8 +51,8 @@
               {%endif%}
             </figure>
             <div class="howto-description has-text-centered mt-5">
-              <font class="title is-size-5 is-uppercase h6 mb-0">Choose</font>
-              <p class="sub-title has-text-weight-light is-size-6">Choose a product.</p>
+              <font class="title is-size-5 is-uppercase h6 mb-0">{{section.settings.text_left_title}}</font>
+              <p class="sub-title has-text-weight-light is-size-6">{{section.settings.text_left_description}}</p>
             </div>
            </div>
            <div class="column is-3-desktop">
@@ -42,29 +64,125 @@
               {%endif%}
             </figure>
             <div class="howto-description has-text-centered mt-5">
-              <font class="title is-size-5 is-uppercase h6 mb-0">Customize</font>
-              <p class="sub-title has-text-weight-light is-size-6">Personalize it.</p>
+              <font class="title is-size-5 is-uppercase h6 mb-0">{{section.settings.text_center_title}}</font>
+              <p class="sub-title has-text-weight-light is-size-6">{{section.settings.text_center_description}}</p>
             </div>
           </div>
           <div class="column is-3-desktop">
              <figure class="image is-5by4">
-               {% if section.settings.image_center != blank %}
+               {% if section.settings.image_right != blank %}
                  <img src="{{section.settings.image_right | img_url: 'master'}}" alt="Shop how to image right">
                {%else%}
                  <img src="https://bulma.io/images/placeholders/480x480.png">
                {%endif%}
              </figure>
              <div class="howto-description has-text-centered mt-5">
-              <font class="title is-size-5 is-uppercase h6 mb-0">Order</font>
-              <p class="sub-title has-text-weight-light is-size-6">Let us work our magic!</p>
+              <font class="title is-size-5 is-uppercase h6 mb-0">{{section.settings.text_right_title}}</font>
+              <p class="sub-title has-text-weight-light is-size-6">{{section.settings.text_right_description}}</p>
             </div>
            </div>
         </div>
     </div>
+    <div class="container is-hidden-tablet">
+      <!-- Slider main container -->
+      <div id="swiperHowTo" class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper is-align-items-flex-end">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <figure class="image is-5by4">
+              {% if section.settings.image_left != blank %}
+                <img src="{{section.settings.image_left | img_url: 'master'}}" alt="Shop how to image left">
+              {%else%}
+                <img src="https://bulma.io/images/placeholders/480x480.png">
+              {%endif%}
+            </figure>
+            <div class="howto-description has-text-centered mt-5">
+              <font class="title is-size-5 is-uppercase h6 mb-0">{{section.settings.text_left_title}}</font>
+              <p class="sub-title has-text-weight-light is-size-6">{{section.settings.text_left_title}}</p>
+            </div>
+          </div>
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <figure class="image is-5by4">
+              {% if section.settings.image_center != blank %}
+                <img src="{{section.settings.image_center | img_url: 'master'}}" alt="Shop how to image center">
+              {%else%}
+                <img src="https://bulma.io/images/placeholders/480x480.png">
+              {%endif%}
+            </figure>
+            <div class="howto-description has-text-centered mt-5">
+              <font class="title is-size-5 is-uppercase h6 mb-0">{{section.settings.text_center_title}}</font>
+              <p class="sub-title has-text-weight-light is-size-6">{{section.settings.text_center_description}}</p>
+            </div>
+          </div>
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <figure class="image is-5by4">
+              {% if section.settings.image_right != blank %}
+                <img src="{{section.settings.image_right | img_url: 'master'}}" alt="Shop how to image right">
+              {%else%}
+                <img src="https://bulma.io/images/placeholders/480x480.png">
+              {%endif%}
+            </figure>
+            <div class="howto-description has-text-centered mt-5">
+              <font class="title is-size-5 is-uppercase h6 mb-0">{{section.settings.text_right_title}}</font>
+              <p class="sub-title has-text-weight-light is-size-6">{{section.settings.text_right_description}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination swiper-pagination-how-to"></div>
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev swiper-button-prev-how-to" style="color: inherit;"></div>
+        <div class="swiper-button-next swiper-button-next-how-to" style="color: inherit;"></div>
+      </div>
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <div class="column is-full has-text-centered mt-6">
+          <a href="{{ section.settings.button_link }}" class="btn hero__cta">
+            {{ section.settings.button_label | escape }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
 </section>
-
 <script>
-  
+  const swiperHowTo = new Swiper('#swiperHowTo', { 
+      // Optional parameters
+      preloadImages: true,
+      slidesPerView: 1,
+      spaceBetween: 10,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      loop: true,
+      loopFillGroupWithBlank: true,
+      navigation: {
+        nextEl: '.swiper-button-next-how-to',
+        prevEl: '.swiper-button-prev-how-to',
+      },
+      pagination: {
+        el: ".swiper-pagination-how-to",
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + "</span>";
+        },
+      },
+      breakpoints: {
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+        },
+        768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+        }
+      }
+  });
 </script>
 {% schema %}
 {
@@ -104,14 +222,50 @@
       "label": "Image on Left"
     },
     {
+      "type": "text",
+      "id": "text_left_title",
+      "label": "Title",
+      "default": "Choose"
+    },
+    {
+      "type": "textarea",
+      "id": "text_left_description",
+      "label": "Description",
+      "default": "Choose a product"
+    },
+    {
       "type": "image_picker",
       "id": "image_center",
       "label": "Image on center"
     },
     {
+      "type": "text",
+      "id": "text_center_title",
+      "label": "Title",
+      "default": "Customize"
+    },
+    {
+      "type": "textarea",
+      "id": "text_center_description",
+      "label": "Description",
+      "default": "Personalize it"
+    },
+    {
       "type": "image_picker",
       "id": "image_right",
       "label": "Image on right"
+    },
+    {
+      "type": "text",
+      "id": "text_right_title",
+      "label": "Title",
+      "default": "Order"
+    },
+    {
+      "type": "textarea",
+      "id": "text_right_description",
+      "label": "Description",
+      "default": "Let us work our magic!"
     }
   ],
   "presets": [

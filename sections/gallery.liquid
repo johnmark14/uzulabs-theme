@@ -142,72 +142,8 @@
         </div>
       {%- endif -%}
     </div>
-    <div class="container is-hidden-tablet is-hidden-mobile">
-      <!-- Slider main container -->
-      <div id="swiperGallery" class="swiper">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper is-align-items-flex-end">
-          <!-- Slides -->
-          {% for block in section.blocks %}
-            {% assign collection = block.settings.collection %}
-            {%if collection != blank%}
-              <a href="/collections/{{collection.handle}}" class="swiper-slide">
-                <figure class="image is-1by1">
-                  <img class="lazyload fade-in {% unless forloop.first == true %} lazypreload{% endunless %}" src="{{collection.image | img_url: 'master'}}">
-                </figure>
-                <div class="product-info has-text-centered">
-                  <p class="title mb-1">{{collection.title}}</p>
-                  {%include 'price-on-display'%}
-                </div>
-              </a>
-            {%else%}
-            <div class="swiper-slide">
-              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-            </div>
-            {%endif%}
-          {%endfor%}
-        </div>
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev swiper-button-prev-mobile" style="color: inherit;"></div>
-        <div class="swiper-button-next swiper-button-next-mobile" style="color: inherit;"></div>
-      </div>
-      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
-        <div class="column is-full has-text-centered mt-6">
-          <a href="{{ section.settings.button_link }}" class="btn hero__cta">
-            {{ section.settings.button_label | escape }}
-          </a>
-        </div>
-      {%- endif -%}
-    </div>
 </section>
-<script>
-  const swiperCollection = new Swiper('#swiperGallery', {
-      // Optional parameters
-      preloadImages: true,
-      slidesPerView: 1,
-      spaceBetween: 10,
-      loop: true,
-      loopFillGroupWithBlank: true,
-      navigation: {
-        nextEl: '.swiper-button-next-mobile',
-        prevEl: '.swiper-button-prev-mobile',
-      },
-      breakpoints: {
-        640: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-        },
-        768: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-        },
-        1024: {
-            slidesPerView: 5,
-            spaceBetween: 30,
-        }
-      }
-  });
-</script>
+
 {% schema %}
 {
   "name": "Gallery",
