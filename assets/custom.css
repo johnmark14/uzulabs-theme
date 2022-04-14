@@ -3833,13 +3833,39 @@
 
 .carousel-clients section, .carousel-clients .section {
   padding-top: 10px !important;
-  padding-bottom: 20px !important;
+  padding-bottom: 10px !important;
+}
+@media screen and (min-width: 769px), print {
+  .carousel-clients .container {
+    padding: 0 130px;
+  }
 }
 .carousel-clients .container .section-header {
   margin-bottom: 10px !important;
 }
 .carousel-clients .container figure.image {
   margin: 0;
+  width: 200px;
+}
+@media screen and (max-width: 768px) {
+  .carousel-clients .container figure.image {
+    width: 120px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .carousel-clients .container .swiper-wrapper {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+.carousel-clients .container .swiper-wrapper .swiper-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .how-to .section .container .columns .column:not(:last-child) .image {

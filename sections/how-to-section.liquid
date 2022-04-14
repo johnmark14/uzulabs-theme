@@ -12,7 +12,7 @@
   .swiper-pagination-how-to {
     padding-top: 40px;
   }
-  .swiper-pagination-bullet {
+  .swiper-pagination-how-to .swiper-pagination-bullet {
     width: 20px !important;
     height: 20px !important;
     text-align: center;
@@ -24,7 +24,7 @@
     background: none !important;
   }
 
-  .swiper-pagination-bullet-active {
+  .swiper-pagination-how-to .swiper-pagination-bullet-active {
     color: #fff !important;
     background: #000 !important;
   }
@@ -168,20 +168,6 @@
           return '<span class="' + className + '">' + (index + 1) + "</span>";
         },
       },
-      breakpoints: {
-        640: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-        },
-        768: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-        },
-        1024: {
-            slidesPerView: 5,
-            spaceBetween: 30,
-        }
-      }
   });
 </script>
 {% schema %}

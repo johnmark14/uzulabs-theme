@@ -6,12 +6,19 @@
   #shopify-section-{{ section.id }} {
     background-color: {{color_background }};
   }
+
+  .swiper-pagination-clients {
+    bottom: -2px !important;
+  }
+  .swiper-pagination-clients .swiper-pagination-bullet-active{
+    background: #000 !important;
+  }
 </style>
 <section class="section">
     <div class="container">
         {% if section.settings.title != blank %}
             <div class="section-header text-center">
-                <h2 class="h1 section-header__title is-uppercase is-size-4">{{ section.settings.title | escape }}</h2>
+                <h2 class="h1 section-header__title is-uppercase is-size-5">{{ section.settings.title | escape }}</h2>
                 {%unless section.settings.hide_rule == true%}
                   <hr class="hr--small">
                 {%endunless%}
@@ -26,8 +33,8 @@
           <!-- Slides -->
           {%for block in section.blocks %}
             {% assign blocks_length = forloop.index %}
-            <div class="swiper-slide">
-              <figure class="image">
+            <div class="swiper-slide" >
+              <figure class="image" >
                 {% if block.settings.client_image != blank %}
                   <img src="{{block.settings.client_image | img_url: 'master'}}" alt="{{block.settings.client_description}}">
                 {%else%}
@@ -37,9 +44,7 @@
             </div>
           {%endfor%}
         </div>
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev swiper-button-prev-clients is-hidden-desktop" style="color: inherit; top: 40%;"></div>
-        <div class="swiper-button-next swiper-button-next-clients is-hidden-desktop" style="color: inherit; top: 40%;"></div>
+        <div class="swiper-pagination swiper-pagination-clients"></div>
       </div>
     </div>
 </section>
@@ -47,12 +52,11 @@
   const swiperClients = new Swiper('#swiperClients', { 
       // Optional parameters
       preloadImages: true,
-      slidesPerView: 1,
+      slidesPerView: 2,
       spaceBetween: 10,
-      freeMode: true,
-      navigation: {
-        nextEl: '.swiper-button-next-clients',
-        prevEl: '.swiper-button-prev-clients',
+      pagination: {
+        el: ".swiper-pagination-clients",
+        clickable: true,
       },
       breakpoints: {
         640: {
@@ -61,11 +65,12 @@
         },
         768: {
             slidesPerView: 4,
-            spaceBetween: 10,
+            spaceBetween: 30,
+            centeredSlides: true,
         },
         1024: {
-            slidesPerView: parseInt("{{blocks_length}}"),
-            spaceBetween: 20,
+            slidesPerView: parseInt("{% if blocks_length > 5 %} 5 {%else%} blocks_length {%endif%}"),
+            spaceBetween: 35,
         }
       }
   });
