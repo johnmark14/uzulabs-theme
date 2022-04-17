@@ -1,0 +1,154 @@
+{%- liquid
+    assign color_background = section.settings.color_background
+    assign color_button_label = section.settings.color_button_label
+    assign color_button_background = section.settings.color_button_background
+  -%}
+  <style>
+      #shopify-section-{{ section.id }} {
+        background-color: {{color_background }};
+      }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+  <section class="section">
+    {% if section.settings.title != blank %}
+      <div class="container">
+          <div class="section-header text-center">
+              <h2 class="h1 section-header__title is-uppercase is-size-4">{{ section.settings.title | escape }}</h2>
+              {%unless section.settings.hide_rule == true%}
+                <hr class="hr--small">
+              {%endunless%}
+          </div>
+        </div>
+      {% endif %}
+      <div class="container">
+        <div class="columns is-multiline is-centered is-variable is-1-mobile is-3">
+            {%for block in section.blocks %}
+              <div class="column is-half-tablet is-two-fifths-fullhd">
+                {%if block.settings.image != blank %}
+                  {%if block.settings.image_url != blank%}
+                  <a href="{{block.settings.image_url_1}}">
+                  {%endif%}
+                    <figure class="image is-4by3" style="margin: 0;">
+                      <img class="lazyload fade-in lazypreload" src="{{block.settings.image | img_url: 'master'}}" style="object-fit: cover;">
+                    </figure>
+                  {%if block.settings.image_url != blank%}
+                  </a>
+                  {%endif%}
+                {%else%}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%endif%}
+                {%if block.settings.text != blank%}
+                    <div class="service-description mt-1">
+                        <h2 class="title is-size-5 is-size-6-mobile">{{block.settings.text}}</h2>
+                    </div>
+                {%endif%}
+              </div> 
+            {%endfor%}
+            {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+                <div class="column is-full has-text-centered mt-6">
+                    <a href="{{ section.settings.button_link }}" class="btn hero__cta">
+                    {{ section.settings.button_label | escape }}
+                    </a>
+                </div>
+            {%- endif -%}
+        </div>
+  </section>
+  
+  {% schema %}
+  {
+    "name": "Our Services",
+    "tag": "section",
+    "class": "our-services",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title",
+        "default": "How to order"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_rule",
+        "label": "Hide Horizontal Rule?",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Slide Settings"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Button Settings"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button Label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "color",
+        "id": "color_button_label",
+        "label": "Button Color Label",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_button_background",
+        "label": "Button Color Background",
+        "default": "#000000"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Services",
+        "type": "services",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Images"
+          },
+          {
+            "type": "url",
+            "id": "image_url",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Service",
+            "default": "Services"
+        }
+        ]
+      }
+    ],
+    "presets": [
+       {
+         "name": "Our Services",
+         "settings": {
+            "title": "Our Services" 
+          },
+          "blocks": [
+            {
+              "type": "services"
+            },
+            {
+              "type": "services"
+            }
+          ]
+        }
+     ]
+  }
+  {% endschema %}
+  

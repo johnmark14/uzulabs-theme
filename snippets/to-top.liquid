@@ -1,0 +1,70 @@
+<style>
+.footer-back {
+    margin-top: 60px;
+    text-align: center;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.footer-back a {
+    color: #757171;
+    text-transform: uppercase;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+}
+
+@media (max-width: 39.9375em) {
+    .footer-back a {
+    font-size: 0.875rem;
+    }
+}
+
+.footer-back a::after {
+    content: "";
+    background: url(https://cdn.shopify.com/s/files/1/0076/8747/1170/t/97/assets/icon-angle@2x.png?v=12070413865707156474) no-repeat 0 0;
+    background-size: 100% 100%;
+    position: absolute;
+    top: -20px;
+    width: 15px;
+    height: 8px;
+    display: inline-block;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+@media (max-width: 39.9375em) {
+    .footer-back a::after {
+        top: -16px;
+        width: 12px;
+        height: 6px;
+    }
+}
+
+.footer-back a:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+}
+</style>
+<div id="top" class="to-top">
+    <a href="/" @click.prevent="toTop">Go back to top</a>
+</div>
+<script>
+    const FooterApp = {
+        data() {
+            return {
+                scTimer: 0,
+                scY: 0,
+            }
+        },
+        methods: {
+             toTop() {
+                 window.scrollTo({
+                     top: 0,
+                     behavior: "smooth"
+                 });
+             }
+        },
+    };
+    Vue.createApp(FooterApp).mount('#top');
+</script>

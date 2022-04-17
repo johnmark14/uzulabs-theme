@@ -87,6 +87,10 @@
 
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
+  <!-- <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.prod.js"></script>  Production -->
+
+  <script src="https://unpkg.com/vue@3"></script> <!-- Development -->
+
   <!-- Header hook for plugins ================================================== -->
   {{ content_for_header }}
 
@@ -135,9 +139,6 @@
         </div>
       {% endunless %}
     </main>
-
-    <hr class="hr--large">
-
     {% section 'footer' %}
 
   </div>
