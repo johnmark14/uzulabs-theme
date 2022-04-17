@@ -25,16 +25,30 @@
             </div>
         {% endif %}
     </div>
-    <div class="container">
+    <div class="container is-hidden-mobile">
+      <div class="columns is-multiline is-vcentered is-centered is-variable is-8-tablet">
+        {%for block in section.blocks %}
+          <div class="column is-narrow">
+            <figure class="image is-3by1">
+              {% if block.settings.client_image != blank %}
+                <img src="{{block.settings.client_image | img_url: 'master'}}" alt="{{block.settings.client_description}}">
+              {%else%}
+                <img src="https://bulma.io/images/placeholders/720x240.png">
+              {%endif%}
+            </figure>
+          </div>
+        {%endfor%}
+      </div>
+    </div>
+    <div class="container is-hidden-tablet">
       <!-- Slider main container -->
       <div id="swiperClients" class="swiper">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper is-align-items-flex-end">
           <!-- Slides -->
           {%for block in section.blocks %}
-            {% assign blocks_length = forloop.index %}
-            <div class="swiper-slide" >
-              <figure class="image" >
+            <div class="swiper-slide">
+              <figure class="image">
                 {% if block.settings.client_image != blank %}
                   <img src="{{block.settings.client_image | img_url: 'master'}}" alt="{{block.settings.client_description}}">
                 {%else%}
@@ -53,33 +67,24 @@
       // Optional parameters
       preloadImages: true,
       slidesPerView: 2,
-      spaceBetween: 10,
+      spaceBetween: 5,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      loop: true,
+      loopFillGroupWithBlank: true,
       pagination: {
         el: ".swiper-pagination-clients",
         clickable: true,
       },
-      breakpoints: {
-        640: {
-            slidesPerView: 2,
-            spaceBetween: 5,
-        },
-        768: {
-            slidesPerView: 4,
-            spaceBetween: 30,
-            centeredSlides: true,
-        },
-        1024: {
-            slidesPerView: parseInt("{% if blocks_length > 5 %} 5 {%else%} blocks_length {%endif%}"),
-            spaceBetween: 35,
-        }
-      }
   });
 </script>
 {% schema %}
 {
-  "name": "Carousel Clients",
+  "name": "Our Clients",
   "tag": "section",
-  "class": "carousel-clients",
+  "class": "our-clients",
   "settings": [
     {
       "type": "text",
@@ -125,7 +130,7 @@
   ],
   "presets": [
      {
-       "name": "Carousel Clients",
+       "name": "Our Clients",
        "settings": {
           "title": "Our Clients" 
         },
