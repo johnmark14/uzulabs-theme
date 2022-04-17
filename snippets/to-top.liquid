@@ -35,7 +35,6 @@
         top: -16px;
         width: 12px;
         height: 6px;
-        
     }
 }
 
@@ -50,7 +49,7 @@
     <a href="/" @click.prevent="toTop">Go back to top</a>
 </div>
 <script>
-    const FooterApp = {
+    const toTop = {
         data() {
             return {
                 scTimer: 0,
@@ -66,5 +65,5 @@
              }
         },
     };
-    Vue.createApp(FooterApp).mount('#top');
+    Vue.createApp(toTop).mount('#top');
 </script>

@@ -1,0 +1,19 @@
+.footer {
+    &--body {
+        min-height: 230px;
+        .column {
+            .link-links.social-icons {
+                li:not(:last-child) {
+                    margin-right: 10px;
+                }
+
+                li {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    &--copy {
+        padding: 15px 10px;
+    }
+}

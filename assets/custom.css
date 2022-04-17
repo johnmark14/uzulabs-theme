@@ -4155,3 +4155,19 @@
   -o-object-fit: scale-down;
      object-fit: scale-down;
 }
+
+.footer--body {
+  min-height: 230px;
+}
+
+.footer--body .column .link-links.social-icons li:not(:last-child) {
+  margin-right: 10px;
+}
+
+.footer--body .column .link-links.social-icons li {
+  font-size: 18px;
+}
+
+.footer--copy {
+  padding: 15px 10px;
+}
