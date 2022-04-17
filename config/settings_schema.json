@@ -1497,6 +1497,12 @@
       },
       {
         "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok",
+        "info": "https:\/\/www.tiktok.com\/shopify"
+      },
+      {
+        "type": "text",
         "id": "social_twitter_link",
         "label": {
           "cs": "Twitter",

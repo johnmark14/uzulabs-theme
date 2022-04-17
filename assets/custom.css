@@ -4160,6 +4160,10 @@
   min-height: 230px;
 }
 
+.footer--body .column .link-links:not(.social-icons) li {
+  margin-top: 10px;
+}
+
 .footer--body .column .link-links.social-icons li:not(:last-child) {
   margin-right: 10px;
 }

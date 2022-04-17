@@ -2,6 +2,11 @@
     &--body {
         min-height: 230px;
         .column {
+            .link-links:not(.social-icons) {
+                li {
+                    margin-top: 10px;
+                }
+            }
             .link-links.social-icons {
                 li:not(:last-child) {
                     margin-right: 10px;
