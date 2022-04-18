@@ -3891,6 +3891,9 @@
 .footer--body {
   min-height: 230px;
 }
+.footer--body .column {
+  margin-top: 3rem;
+}
 .footer--body .column .link-links:not(.social-icons) li {
   margin-top: 10px;
 }
@@ -3899,6 +3902,14 @@
 }
 .footer--body .column .link-links.social-icons li {
   font-size: 18px;
+}
+@media screen and (max-width: 1023px) {
+  .footer--body .column {
+    margin-top: 0.25rem;
+  }
+  .footer--body .column .footer-logo {
+    margin-top: 3rem;
+  }
 }
 .footer--copy {
   padding: 15px 10px;

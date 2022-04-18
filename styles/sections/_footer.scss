@@ -16,6 +16,16 @@
                     font-size: 18px;
                 }
             }
+
+            margin-top: 3rem;
+
+            @include touch {
+                margin-top: 0.25rem;
+
+                .footer-logo {
+                    margin-top: 3rem;
+                }
+            }
         }
     }
     &--copy {

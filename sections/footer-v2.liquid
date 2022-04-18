@@ -22,7 +22,7 @@
   <div class="container footer--body pb-6 px-2">
     <div class="columns is-multiline">
       <!-- Logo -->
-      <div class="column is-3-desktop mt-6 is-hidden-touch">
+      <div class="column is-3-desktop is-full-touch has-text-centered-touch">
         <div class="footer-logo mb-5">
           {% capture image_size %}{{ logo_max_width | escape }}x{% endcapture %}
           <a href="{{ routes.root_url }}" itemprop="url" class="footer-logo-link is-size-3" style="color: {{color_text}}">
@@ -33,7 +33,7 @@
             {% endif %}
           </a>
         </div>
-        <div class="footer--link">
+        <div class="footer--link is-hidden-touch">
           <h4 style="color: {{color_text}}" class="link-title is-size-5 has-text-weight-normal">NEED HELP?</h4>
           <ul class="link-links no-bullets has-text-weight-light is-uppercase">
             <li><a href="#" style="color: {{color_text}}">Click here to contact Us</a></li>
@@ -41,7 +41,7 @@
         </div>
       </div>
       <!-- Footer Links -->
-      <div class="column is-half-mobile mt-6">
+      <div class="column is-full-mobile has-text-centered-mobile">
         <div class="footer--link">
           <h4 style="color: {{color_text}}" class="link-title is-uppercase is-size-5 has-text-weight-normal">Company</h4>
           <ul class="link-links no-bullets has-text-weight-light is-uppercase">
@@ -53,7 +53,7 @@
           </ul>
         </div>
       </div>
-      <div class="column is-half-mobile mt-6">
+      <div class="column is-full-mobile has-text-centered-mobile">
         <div class="footer--link">
           <h4 style="color: {{color_text}}" class="link-title is-uppercase is-size-5 has-text-weight-normal">Help</h4>
           <ul class="link-links no-bullets has-text-weight-light is-uppercase">
@@ -62,7 +62,7 @@
           </ul>
         </div>
       </div>
-      <div class="column is-half-mobile mt-6">
+      <div class="column is-full-mobile has-text-centered-mobile">
         <div class="footer--link">
           <h4 style="color: {{color_text}}" class="link-title is-uppercase is-size-5 has-text-weight-normal">Shop</h4>
           <ul class="link-links no-bullets has-text-weight-light is-uppercase">
@@ -75,7 +75,7 @@
           </ul>
         </div>
       </div>
-      <div class="column is-half-mobile mt-6">
+      <div class="column is-full-mobile has-text-centered-mobile">
         <div class="footer--link">
           <h4 style="color: {{color_text}}" class="link-title is-uppercase is-size-5 has-text-weight-normal">WholeSale</h4>
           <ul class="link-links no-bullets has-text-weight-light is-uppercase">
@@ -85,7 +85,7 @@
         </div>
       </div>
       <!-- Socials -->
-      <div class="column is-2-desktop mt-6 is-hidden-touch">
+      <div class="column is-2-desktop is-hidden-touch">
         <h4 class="link-title has-text-weight-normal is-uppercase" style="color: {{color_text}}">Social Media</h4>
         <ul class="link-links no-bullets social-icons is-flex">
           {% if settings.social_facebook_link != blank %}
@@ -184,17 +184,7 @@
     </div>
     <div class="columns is-hidden-desktop">
       <!-- Logo -->
-      <div class="column is-half mt-6">
-        <div class="footer-logo mb-5">
-          {% capture image_size %}{{ logo_max_width | escape }}x{% endcapture %}
-          <a href="{{ routes.root_url }}" itemprop="url" class="footer-logo-link is-size-3" style="color: {{color_text}}">
-            {% if section.settings.logo %}
-              <img class="footer-logo-image" src="{{ section.settings.logo | img_url: image_size }}" srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">
-            {% else %}
-              {{ shop.name }}
-            {% endif %}
-          </a>
-        </div>
+      <div class="column is-half is-full-mobile has-text-centered-mobile">
         <div class="footer--link">
           <h4 style="color: {{color_text}}" class="link-title is-size-5 has-text-weight-normal">NEED HELP?</h4>
           <ul class="link-links no-bullets has-text-weight-light is-uppercase">
@@ -203,9 +193,9 @@
         </div>
       </div>
       <!-- Socials -->
-      <div class="column is-half mt-6">
-        <h4 class="link-title has-text-weight-normal" style="color: {{color_text}}">Social Media</h4>
-        <ul class="link-links no-bullets social-icons is-flex">
+      <div class="column is-half has-text-centered-touch">
+        <h4 class="link-title has-text-weight-normal is-uppercase" style="color: {{color_text}}">Social Media</h4>
+        <ul class="link-links no-bullets social-icons is-flex is-justify-content-center">
           {% if settings.social_facebook_link != blank %}
             <li>
               <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
@@ -284,6 +274,20 @@
             </li>
           {% endif %}
         </ul>
+        <div class="footer--link">
+          {%- if section.settings.show_payment_icons -%}
+            {%- unless shop.enabled_payment_types == empty -%}
+              <span class="visually-hidden">{{ 'general.payment.method' | t }}</span>
+              <ul class="inline-list payment-icons site-footer__payment-icons">
+                {%- for type in shop.enabled_payment_types -%}
+                  <li>
+                    {{ type | payment_type_svg_tag: class: 'icon' }}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endunless -%}
+          {%- endif -%}
+        </div>
       </div>
     </div>
   </div>
