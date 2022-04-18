@@ -86,7 +86,7 @@
       </div>
       <!-- Socials -->
       <div class="column is-2-desktop mt-6 is-hidden-touch">
-        <h4 class="link-title has-text-weight-normal" style="color: {{color_text}}">Social Media</h4>
+        <h4 class="link-title has-text-weight-normal is-uppercase" style="color: {{color_text}}">Social Media</h4>
         <ul class="link-links no-bullets social-icons is-flex">
           {% if settings.social_facebook_link != blank %}
             <li>
@@ -166,6 +166,20 @@
             </li>
           {% endif %}
         </ul>
+        <div class="footer--link">
+          {%- if section.settings.show_payment_icons -%}
+            {%- unless shop.enabled_payment_types == empty -%}
+              <span class="visually-hidden">{{ 'general.payment.method' | t }}</span>
+              <ul class="inline-list payment-icons site-footer__payment-icons">
+                {%- for type in shop.enabled_payment_types -%}
+                  <li>
+                    {{ type | payment_type_svg_tag: class: 'icon' }}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endunless -%}
+          {%- endif -%}
+        </div>
       </div>
     </div>
     <div class="columns is-hidden-desktop">
