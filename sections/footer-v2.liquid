@@ -2,6 +2,11 @@
   assign color_background = section.settings.color_background
   assign color_text = section.settings.color_text
   assign logo_max_width = section.settings.logo_max_width
+  assign help_title = section.settings.help_title
+  assign help_text = section.settings.help_text
+  assign help_url = section.settings.help_url
+  assign footer_menu = linklists[section.settings.footer_link_list].links
+  assign footer_menu_size = linklists[section.settings.footer_link_list].links.size
 -%}
 <style>
   #shopify-section-{{ section.id }}, #shopify-section-{{ section.id }} p>a {
@@ -33,57 +38,32 @@
             {% endif %}
           </a>
         </div>
-        <div class="footer--link is-hidden-touch">
-          <h4 style="color: {{color_text}}" class="link-title is-size-5 has-text-weight-normal">NEED HELP?</h4>
-          <ul class="link-links no-bullets has-text-weight-light is-uppercase">
-            <li><a href="#" style="color: {{color_text}}">Click here to contact Us</a></li>
-          </ul>
-        </div>
+        {%if help_url != blank %}
+          <div class="footer--link is-hidden-touch">
+            <h4 style="color: {{color_text}}" class="link-title is-size-5 has-text-weight-normal">{{help_title}}</h4>
+            <ul class="link-links no-bullets has-text-weight-light is-uppercase">
+              <li><a href="{{help_url}}" style="color: {{color_text}}">{{help_text}}</a></li>
+            </ul>
+          </div>
+        {%endif%}
       </div>
       <!-- Footer Links -->
-      <div class="column is-full-mobile has-text-centered-mobile">
-        <div class="footer--link">
-          <h4 style="color: {{color_text}}" class="link-title is-uppercase is-size-5 has-text-weight-normal">Company</h4>
-          <ul class="link-links no-bullets has-text-weight-light is-uppercase">
-            <li><a href="#" style="color: {{color_text}}">About us</a></li>
-            <li><a href="#" style="color: {{color_text}}">Manufacturing</a></li>
-            <li><a href="#" style="color: {{color_text}}">Careers</a></li>
-            <li><a href="#" style="color: {{color_text}}">Charity</a></li>
-            <li><a href="#" style="color: {{color_text}}">Privacy Policy</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="column is-full-mobile has-text-centered-mobile">
-        <div class="footer--link">
-          <h4 style="color: {{color_text}}" class="link-title is-uppercase is-size-5 has-text-weight-normal">Help</h4>
-          <ul class="link-links no-bullets has-text-weight-light is-uppercase">
-            <li><a href="#" style="color: {{color_text}}">Frequently asked questions</a></li>
-            <li><a href="#" style="color: {{color_text}}">Customer Service</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="column is-full-mobile has-text-centered-mobile">
-        <div class="footer--link">
-          <h4 style="color: {{color_text}}" class="link-title is-uppercase is-size-5 has-text-weight-normal">Shop</h4>
-          <ul class="link-links no-bullets has-text-weight-light is-uppercase">
-            <li><a href="#" style="color: {{color_text}}">Steel Drinkware</a></li>
-            <li><a href="#" style="color: {{color_text}}">Glass Drinkware</a></li>
-            <li><a href="#" style="color: {{color_text}}">Keychains</a></li>
-            <li><a href="#" style="color: {{color_text}}">Silicone Sleeves</a></li>
-            <li><a href="#" style="color: {{color_text}}">Ice trays</a></li>
-            <li><a href="#" style="color: {{color_text}}">View all products</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="column is-full-mobile has-text-centered-mobile">
-        <div class="footer--link">
-          <h4 style="color: {{color_text}}" class="link-title is-uppercase is-size-5 has-text-weight-normal">WholeSale</h4>
-          <ul class="link-links no-bullets has-text-weight-light is-uppercase">
-            <li><a href="#" style="color: {{color_text}}">Custom Orders</a></li>
-            <li><a href="#" style="color: {{color_text}}">Corporate Orders</a></li>
-          </ul>
-        </div>
-      </div>
+      {%if footer_menu_size > 0%}
+        {%for link in footer_menu %}
+          <div class="column is-full-mobile has-text-centered-mobile">
+            <div class="footer--link">
+              <h4 style="color: {{color_text}}" class="link-title is-uppercase is-size-5 has-text-weight-normal">{{link.title}}</h4>
+              {%if link.levels > 0%}
+                <ul class="link-links no-bullets has-text-weight-light is-uppercase">
+                  {%for l in link.links %}
+                    <li><a href="{{l.url}}" style="color: {{color_text}}">{{l.title}}</a></li>
+                  {%endfor%}
+                </ul>
+              {%endif%}
+            </div>
+          </div>
+        {%endfor%}
+      {%endif%}
       <!-- Socials -->
       <div class="column is-2-desktop is-hidden-touch">
         <h4 class="link-title has-text-weight-normal is-uppercase" style="color: {{color_text}}">Social Media</h4>
@@ -183,15 +163,17 @@
       </div>
     </div>
     <div class="columns is-hidden-desktop">
-      <!-- Logo -->
+      <!-- Footer Help -->
+      {% if help_url != blank %}
       <div class="column is-half is-full-mobile has-text-centered-mobile">
         <div class="footer--link">
-          <h4 style="color: {{color_text}}" class="link-title is-size-5 has-text-weight-normal">NEED HELP?</h4>
+          <h4 style="color: {{color_text}}" class="link-title is-size-5 has-text-weight-normal">{{help_title}}</h4>
           <ul class="link-links no-bullets has-text-weight-light is-uppercase">
-            <li><a href="#" style="color: {{color_text}}">Click here to contact Us</a></li>
+            <li><a href="{{help_url}}" style="color: {{color_text}}">{{help_text}}</a></li>
           </ul>
         </div>
       </div>
+      {%endif%}
       <!-- Socials -->
       <div class="column is-half has-text-centered-touch">
         <h4 class="link-title has-text-weight-normal is-uppercase" style="color: {{color_text}}">Social Media</h4>
@@ -338,6 +320,27 @@
       "id": "footer_link_list",
       "label": "Footer menu",
       "default": "footer"
+    },
+    {
+      "type": "header",
+      "content": "Help Page"
+    },
+    {
+      "type": "text",
+      "id": "help_title",
+      "label": "Help Tile",
+      "default": "Need help?"
+    },
+    {
+      "type": "text",
+      "id": "help_text",
+      "label": "Help Text",
+      "default": "Click here to contact us"
+    },
+    {
+      "type": "url",
+      "id": "help_url",
+      "label": "Help Page"
     },
     {
       "type": "header",
