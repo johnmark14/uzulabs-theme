@@ -131,13 +131,17 @@
 
   <div id="PageContainer" class="page-container">
     <main class="main-content" role="main">
+      {%comment%}
       {% unless request.page_type == "index" %}
         <div class="wrapper">
       {% endunless %}
+      {%endcomment%}
         {{ content_for_layout }}
+      {%comment%}
       {% unless request.page_type == "index" %}
         </div>
       {% endunless %}
+      {%endcomment%}
     </main>
     {% include "to-top" %}
     {% section 'footer-v2' %}
