@@ -1877,6 +1877,53 @@ fieldset[disabled] .file-name {
   border-radius: 0;
 }
 
+.side-accordion.accordions .accordion {
+  border-radius: 0;
+  background-color: unset;
+}
+
+.side-accordion.accordions .accordion:last-child .accordion-header + .accordion-body {
+  border-bottom: 1px solid #0a0a0a;
+}
+
+.side-accordion.accordions .accordion .accordion-header {
+  background-color: unset;
+  border-radius: 0;
+  color: #0a0a0a;
+  border-top: 1px solid #0a0a0a;
+  padding-left: 0;
+}
+
+.side-accordion.accordions .accordion .accordion-header .link-title {
+  margin-top: 7px;
+}
+
+.side-accordion.accordions .accordion .accordion-header .toggle {
+  background-color: unset;
+  pointer-events: none;
+}
+
+.side-accordion.accordions .accordion .accordion-header .toggle::before {
+  right: -0.75em;
+  top: -0.4em;
+  color: #0a0a0a;
+  font-size: 18px;
+}
+
+.side-accordion.accordions .accordion .accordion-header + .accordion-body {
+  color: unset;
+  border: none;
+  border-radius: 0;
+}
+
+.product-swatch {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-color: red;
+  border-radius: 50%;
+}
+
 .breadcrumb {
   font-size: 1rem;
   white-space: nowrap;
@@ -6765,6 +6812,24 @@ fieldset[disabled] .select select:hover {
 
 .collection-page .column .product-search .field .control input::placeholder {
   color: #0a0a0a;
+}
+
+.collection-page .column .product-swatches {
+  height: 30px;
+}
+
+.collection-page .column .product-swatches .product-wrapper {
+  width: 16px;
+  height: 16px;
+}
+
+.collection-page .column .product-swatches .product-wrapper:not(:last-child) {
+  margin-right: 4px;
+}
+
+.collection-page .column .product-swatches .variant-count {
+  padding-top: 2px;
+  font-size: 12px;
 }
 
 .footer--body {

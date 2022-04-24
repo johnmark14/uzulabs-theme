@@ -14,5 +14,19 @@
                 }
             }
         }
+        .product-swatches {
+            height: 30px;
+            .product-wrapper {
+                width: 16px;
+                height: 16px;
+                &:not(:last-child) {
+                    margin-right: 4px;
+                }
+            }
+            .variant-count {
+                padding-top: 2px;
+                font-size: 12px;
+            }
+        }
     }
 }

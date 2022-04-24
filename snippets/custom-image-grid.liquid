@@ -7,6 +7,16 @@
         <p class="title product-title has-text-centered">Thermi 16oz Cup Death Before Decaf</p>
         <span class="product-price has-text-weight-light has-text-centered">$24.95</span>
       </div>
+      <div class="product-swatches is-flex is-justify-content-center is-align-items-center">
+        {% for i in (1..5) %}
+          <div class="product-wrapper">
+            {%render 'custom-product-swatch'%}
+          </div>
+        {%endfor%}
+        <div class="variant-count has-text-weight-light">
+          +13
+        </div>
+      </div>
     </div>
     <div class="column is-3">
       <figure class="image is-4by5">
