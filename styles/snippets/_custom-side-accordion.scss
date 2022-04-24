@@ -1,0 +1,37 @@
+.side-accordion.accordions {
+    .accordion {
+        border-radius: 0;
+        background-color: unset;
+
+        &:last-child .accordion-header + .accordion-body {
+            border-bottom: 1px solid $black;
+        }
+    }
+    .accordion .accordion-header {
+        background-color: unset;
+        border-radius: 0;
+        color: $black;
+        border-top: 1px solid $black;
+        padding-left: 0;
+
+        .link-title {margin-top: 7px;}
+
+        .toggle {
+            background-color: unset;
+            pointer-events: none;
+
+            &::before {
+                right: -0.75em;
+                top: -0.4em;
+                color: $black;
+                font-size: 18px;
+            }
+        }
+
+        &+.accordion-body {
+            color: unset;
+            border: none;
+            border-radius: 0;
+        }
+    }
+}
