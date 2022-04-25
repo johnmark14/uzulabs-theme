@@ -1,6 +1,7 @@
 .image-grid {
     figure.image {
         margin: 0;
+        img {object-fit: cover;}
     }
     .product-meta {
         p {margin: 0;}

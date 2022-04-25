@@ -1834,6 +1834,11 @@ fieldset[disabled] .file-name {
   margin: 0;
 }
 
+.image-grid figure.image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .image-grid .product-meta p {
   margin: 0;
 }

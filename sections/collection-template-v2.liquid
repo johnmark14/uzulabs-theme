@@ -1,4 +1,12 @@
 <!-- /templates/collection.liquid -->
+<style>
+  .collection-page .hero {
+    background-image: url('{{collection.featured_image | img_url: "master"}}');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
+</style>
 <section class="hero is-medium is-link">
   <div class="hero-body has-text-centered">
     <p>Collection Image</p>
@@ -33,7 +41,7 @@
       </div>
       <div class="column has-text-centered">
         <h2 class="title is-uppercase is-size-5 pb-3">Steel Drinkware/Pets</h2>
-        {% render 'custom-image-grid'%}
+        {% render 'custom-image-grid' collection: collection %}
       </div>
     </div>
   </div>
