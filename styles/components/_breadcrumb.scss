@@ -42,6 +42,7 @@ $breadcrumb-item-separator-color: $border-hover !default;
         color: $breadcrumb-item-active-color;
         cursor: default;
         pointer-events: none;
+        font-weight: $weight-medium;
       }
     }
 

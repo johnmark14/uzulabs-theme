@@ -1968,6 +1968,7 @@ fieldset[disabled] .file-name {
   color: #363636;
   cursor: default;
   pointer-events: none;
+  font-weight: 500;
 }
 
 .breadcrumb li + li::before {
