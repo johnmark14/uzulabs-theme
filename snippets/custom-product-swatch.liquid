@@ -1,1 +1,5 @@
-<span class="product-swatch swatch-active"></span>
+{%- liquid
+    assign background_color = background_color
+    assign background_image = background_image    
+-%}
+<span class="product-swatch swatch-active" style="{%if background_image != blank %} background-image: url('{{background_image | img_url: 'master'}}'); background-size: cover; {%elsif background_color != blank %} background-color: {{background_color}}; {%endif%}"></span>

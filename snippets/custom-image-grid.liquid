@@ -1,6 +1,6 @@
 <div class="columns image-grid is-multiline mb-6">
     {% for product in collection.products%}
-      <div class="column is-3">
+      <a href="{{product.url}}" class="column is-3">
         <figure class="image is-4by5">
           <img src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
         </figure>
@@ -9,15 +9,30 @@
           <span class="product-price has-text-weight-light has-text-centered">{{ product.price | money_without_trailing_zeros }}</span>
         </div>
         <div class="product-swatches is-flex is-justify-content-center is-align-items-center">
-          {% for i in (1..5) %}
-            <div class="product-wrapper">
-              {%render 'custom-product-swatch'%}
-            </div>
+          {%assign variants_hidden = 0%}
+          {% for variant in product.variants %}
+            {%if variant.metafields.image_color.value.value != blank%}
+              {%assign variants_hidden = variants_hidden | plus:1 %}
+              {%if variants_hidden <= 5%}
+              <div class="product-wrapper">
+                {%render 'custom-product-swatch' background_image: variant.metafields.image_color.value.value%}
+              </div>
+              {%endif%}
+            {%elsif variant.metafields.color.value.value != blank%}
+              {%assign variants_hidden = variants_hidden | plus:1 %}
+              {%if variants_hidden <= 5%}
+              <div class="product-wrapper">
+                {%render 'custom-product-swatch' background_color: variant.metafields.color.value.value%}
+              </div>
+              {%endif%}
+            {%endif%}
           {%endfor%}
-          <div class="variant-count has-text-weight-light">
-            +13
-          </div>
+          {%if variants_hidden > 5 %}
+            <div class="variant-count has-text-weight-light">
+              +{{variants_hidden | minus: 5}}
+            </div>
+          {%endif%}
         </div>
-      </div>
+      </a>
     {%endfor%}
   </div>
