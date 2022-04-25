@@ -141,7 +141,7 @@ fieldset[disabled] .file-name {
 }
 
 .is-size-7 {
-  font-size: 0.75rem !important;
+  font-size: 0.82rem !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -164,7 +164,7 @@ fieldset[disabled] .file-name {
     font-size: 1rem !important;
   }
   .is-size-7-mobile {
-    font-size: 0.75rem !important;
+    font-size: 0.82rem !important;
   }
 }
 
@@ -188,7 +188,7 @@ fieldset[disabled] .file-name {
     font-size: 1rem !important;
   }
   .is-size-7-tablet {
-    font-size: 0.75rem !important;
+    font-size: 0.82rem !important;
   }
 }
 
@@ -212,7 +212,7 @@ fieldset[disabled] .file-name {
     font-size: 1rem !important;
   }
   .is-size-7-touch {
-    font-size: 0.75rem !important;
+    font-size: 0.82rem !important;
   }
 }
 
@@ -236,7 +236,7 @@ fieldset[disabled] .file-name {
     font-size: 1rem !important;
   }
   .is-size-7-desktop {
-    font-size: 0.75rem !important;
+    font-size: 0.82rem !important;
   }
 }
 
@@ -260,7 +260,7 @@ fieldset[disabled] .file-name {
     font-size: 1rem !important;
   }
   .is-size-7-widescreen {
-    font-size: 0.75rem !important;
+    font-size: 0.82rem !important;
   }
 }
 
@@ -284,7 +284,7 @@ fieldset[disabled] .file-name {
     font-size: 1rem !important;
   }
   .is-size-7-fullhd {
-    font-size: 0.75rem !important;
+    font-size: 0.82rem !important;
   }
 }
 
@@ -2014,7 +2014,7 @@ fieldset[disabled] .file-name {
 }
 
 .breadcrumb.is-small {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
 }
 
 .breadcrumb.is-medium {
@@ -2223,7 +2223,7 @@ fieldset[disabled] .select select:-ms-input-placeholder,
 
 .is-small.input, .is-small.textarea {
   border-radius: 2px;
-  font-size: 0.75rem;
+  font-size: 0.82rem;
 }
 
 .is-medium.input, .is-medium.textarea {
@@ -2536,7 +2536,7 @@ fieldset[disabled] .select select:hover {
 
 .select.is-small {
   border-radius: 2px;
-  font-size: 0.75rem;
+  font-size: 0.82rem;
 }
 
 .select.is-medium {
@@ -2569,7 +2569,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .select.is-loading.is-small:after {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
 }
 
 .select.is-loading.is-medium:after {
@@ -2844,7 +2844,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .file.is-small {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
 }
 
 .file.is-normal {
@@ -3070,7 +3070,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .label.is-small {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
 }
 
 .label.is-medium {
@@ -3083,7 +3083,7 @@ fieldset[disabled] .select select:hover {
 
 .help {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   margin-top: 0.25rem;
 }
 
@@ -3311,7 +3311,7 @@ fieldset[disabled] .select select:hover {
     text-align: right;
   }
   .field-label.is-small {
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     padding-top: 0.375em;
   }
   .field-label.is-normal {
@@ -3379,7 +3379,7 @@ fieldset[disabled] .select select:hover {
 .control.has-icons-left .input.is-small ~ .icon,
 .control.has-icons-left .select.is-small ~ .icon, .control.has-icons-right .input.is-small ~ .icon,
 .control.has-icons-right .select.is-small ~ .icon {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
 }
 
 .control.has-icons-left .input.is-medium ~ .icon,
@@ -3430,7 +3430,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .control.is-loading.is-small:after {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
 }
 
 .control.is-loading.is-medium:after {
