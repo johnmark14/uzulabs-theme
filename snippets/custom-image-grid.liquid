@@ -1,13 +1,15 @@
 <div class="columns image-grid is-multiline mb-6">
     {% for product in collection.products%}
-      <a href="{{product.url}}" class="column is-3">
-        <figure class="image is-4by5">
-          <img src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
-        </figure>
-        <div class="product-meta mt-2">
-          <p class="title product-title has-text-centered">{{product.title}}</p>
-          <span class="product-price has-text-weight-light has-text-centered">{{ product.price | money_without_trailing_zeros }}</span>
-        </div>
+      <div  class="column is-3">
+        <a href="{{product.url}}">
+          <figure class="image is-4by5">
+            <img src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
+          </figure>
+          <div class="product-meta mt-2">
+            <p class="title product-title has-text-centered">{{product.title}}</p>
+            <span class="product-price has-text-weight-light has-text-centered">{{ product.price | money_without_trailing_zeros }}</span>
+          </div>
+        </a>
         <div class="product-swatches is-flex is-justify-content-center is-align-items-center">
           {%assign variants_hidden = 0%}
           {% for variant in product.variants %}
@@ -33,6 +35,6 @@
             </div>
           {%endif%}
         </div>
-      </a>
+      </div>
     {%endfor%}
   </div>
