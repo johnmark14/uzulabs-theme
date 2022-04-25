@@ -73,13 +73,13 @@ $pre-background: $background !default;
 
 // Link colors
 
-$link: $blue !default;
+$link: $grey !default;
 $link-invert: findColorInvert($link) !default;
 $link-light: findLightColor($link) !default;
 $link-dark: findDarkColor($link) !default;
 $link-visited: $purple !default;
 
-$link-hover: $grey-darker !default;
+$link-hover: $black !default;
 $link-hover-border: $grey-light !default;
 
 $link-focus: $grey-darker !default;
