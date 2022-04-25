@@ -17,10 +17,25 @@
         .product-swatches {
             height: 30px;
             .product-wrapper {
-                width: 16px;
-                height: 16px;
+                width: 18px;
+                height: 18px;
                 &:not(:last-child) {
                     margin-right: 4px;
+                }
+
+                &:hover {
+                    position: relative;
+                    .swatch-active::after{
+                        content: "";
+                        cursor: pointer;
+                        width: 14px;
+                        height: 14px;
+                        top: 2px;
+                        left: 2px;
+                        border: 1px solid $white;
+                        border-radius: 50%;
+                        position: absolute;
+                    }
                 }
             }
             .variant-count {

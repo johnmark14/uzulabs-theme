@@ -6823,12 +6823,28 @@ fieldset[disabled] .select select:hover {
 }
 
 .collection-page .column .product-swatches .product-wrapper {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 .collection-page .column .product-swatches .product-wrapper:not(:last-child) {
   margin-right: 4px;
+}
+
+.collection-page .column .product-swatches .product-wrapper:hover {
+  position: relative;
+}
+
+.collection-page .column .product-swatches .product-wrapper:hover .swatch-active::after {
+  content: "";
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  top: 2px;
+  left: 2px;
+  border: 1px solid white;
+  border-radius: 50%;
+  position: absolute;
 }
 
 .collection-page .column .product-swatches .variant-count {
