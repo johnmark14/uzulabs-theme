@@ -42,7 +42,7 @@
           <div class="footer--link is-hidden-touch">
             <h4 style="color: {{color_text}}" class="link-title is-size-5 has-text-weight-normal">{{help_title}}</h4>
             <ul class="link-links no-bullets has-text-weight-light is-uppercase">
-              <li><a href="{{help_url}}" style="color: {{color_text}}">{{help_text}}</a></li>
+              <li><a href="{{help_url}}" style="color: {{color_text}}" class="text-hover">{{help_text}}</a></li>
             </ul>
           </div>
         {%endif%}
@@ -56,7 +56,7 @@
               {%if link.levels > 0%}
                 <ul class="link-links no-bullets has-text-weight-light is-uppercase">
                   {%for l in link.links %}
-                    <li><a href="{{l.url}}" style="color: {{color_text}}">{{l.title}}</a></li>
+                    <li><a href="{{l.url}}" style="color: {{color_text}}" class="text-hover">{{l.title}}</a></li>
                   {%endfor%}
                 </ul>
               {%endif%}
@@ -169,7 +169,7 @@
         <div class="footer--link">
           <h4 style="color: {{color_text}}" class="link-title is-size-5 has-text-weight-normal">{{help_title}}</h4>
           <ul class="link-links no-bullets has-text-weight-light is-uppercase">
-            <li><a href="{{help_url}}" style="color: {{color_text}}">{{help_text}}</a></li>
+            <li><a href="{{help_url}}" style="color: {{color_text}}" class="text-hover">{{help_text}}</a></li>
           </ul>
         </div>
       </div>
