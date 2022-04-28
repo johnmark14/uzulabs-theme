@@ -1,96 +1,57 @@
 <div class="side-accordion accordions">
   <nav class="nav" role="navigation">
     <ul class="nav__list m-0">
-      <li>
-        <input id="group-1" type="checkbox" hidden />
-        <label for="group-1" class="pl-0"><span class="fa fa-angle-right"></span> First level</label>
-        <ul class="group-list m-0">
-          <li><a href="#">1st level item</a></li>
+      {% for link in linklists[section.settings.navigation_menu].links %}
+        <!-- Top Level -->
+        {%if link.levels > 0 %}
+          <!-- If we're dealing with mega menu -->
           <li>
-            <input id="sub-group-1" type="checkbox" hidden />
-            <label for="sub-group-1"><span class="fa fa-angle-right"></span> Second level</label>
-            <ul class="sub-group-list m-0">
-              <li><a href="#">2nd level nav item</a></li>
-              <li><a href="#">2nd level nav item</a></li>
-              <li><a href="#">2nd level nav item</a></li>
-              <li><a href="#">2nd level nav item</a></li>
-              <li>
-                <input id="sub-sub-group-1" type="checkbox" hidden />
-                <label for="sub-sub-group-1"><span class="fa fa-angle-right"></span> Third level</label>
-                <ul class="sub-sub-group-list m-0">
-                  <li><a href="#">3rd level nav item</a></li>
-                  <li><a href="#">3rd level nav item</a></li>
-                  <li><a href="#">3rd level nav item</a></li>
-                </ul>
-              </li>
+            <input id="group-1" type="checkbox" hidden />
+            <label for="group-1" class="pl-1 is-size-7 has-text-weight-medium is-uppercase">
+              <span class="icon-closed">+</span><span class="icon-open">-</span>{{link.title}}</label>
+            <ul class="group-list m-0">
+              {% for sub_link in link.links %}
+                {% if sub_link.levels > 0 %}
+                  <!-- If we're dealing with a mega menu -->
+                  <li>
+                    <input id="sub-group-1" type="checkbox" hidden />
+                    <label for="sub-group-1" class="is-size-7 has-text-weight-medium is-uppercase">
+                      <span class="icon-closed">+</span><span class="icon-open">-</span>{{sub_link.title}}</label>
+                    <ul class="sub-group-list m-0">
+                      {%for super_sub_link in sub_link.links %}
+                        {%if super_sub_link.levels > 0%}
+                          <!-- If we're dealing with a mega menu -->
+                          <li>
+                            <input id="sub-sub-group-1" type="checkbox" hidden />
+                            <label for="sub-sub-group-1" class="is-size-7 has-text-weight-medium is-uppercase">
+                              <span class="icon-closed">+</span><span class="icon-open">-</span>{{super_sub_link.title}}</label>
+                            <ul class="sub-sub-group-list m-0">
+                              {%for mega_sub_link in super_sub_link.links%}
+                                <li class="is-size-7 has-text-weight-medium is-uppercase"><a href="{{super_sub_link.url}}">{{super_sub_link.title}}</a></li>
+                              {%endfor%}
+                            </ul>
+                          </li>
+                        {%else%}
+                          <!-- If we're not dealing with a mega menu -->
+                          <li class="is-size-7 has-text-weight-medium is-uppercase"><a href="{{super_sub_link.url}}">{{super_sub_link.title}}</a></li>
+                        {%endif%}
+                      {%endfor%}
+                    </ul>
+                  </li>
+                {%else%}
+                  <!-- If we're not dealing with a mega menu -->
+                  <li class="is-size-7 has-text-weight-medium is-uppercase"><a href="{{sub_link.url}}">{{sub_link.title}}</a></li>
+                {%endif%}
+              {%endfor%}
             </ul>
           </li>
-        </ul>
-      </li>
-      <li>
-      <input id="group-2" type="checkbox" hidden />
-      <label for="group-2" class="pl-0"><span class="fa fa-angle-right"></span> First level</label>
-      <ul class="group-list m-0">
-        <li>
-        <li><a href="#">1st level item</a></li>
-        <li><a href="#">1st level item</a></li>
-        <input id="sub-group-2" type="checkbox" hidden />
-        <label for="sub-group-2"><span class="fa fa-angle-right"></span> Second level</label>
-        <ul class="sub-group-list m-0">
-          <li><a href="#">2nd level nav item</a></li>
-          <li><a href="#">2nd level nav item</a></li>
-          <li>
-            <input id="sub-sub-group-2" type="checkbox" hidden />
-            <label for="sub-sub-group-2"><span class="fa fa-angle-right"></span> Third level</label>
-            <ul class="sub-sub-group-list m-0">
-              <li><a href="#">3rd level nav item</a></li>
-            </ul>
+        {%else%}
+        <!-- If we're not dealing with mega menu -->
+          <li class="is-size-7 has-text-weight-medium is-uppercase">
+            <a href="{{link.url}}" class="pl-1">{{link.title}}</a>
           </li>
-        </ul>
-        </li>
-      </ul>
-      </li>
-      <li>
-      <input id="group-3" type="checkbox" hidden />
-      <label for="group-3" class="pl-0"><span class="fa fa-angle-right"></span> First level</label>
-      <ul class="group-list m-0">
-        <li>
-        <li><a href="#">1st level item</a></li>
-        <li><a href="#">1st level item</a></li>
-        <input id="sub-group-3" type="checkbox" hidden />
-        <label for="sub-group-3"><span class="fa fa-angle-right"></span> Second level</label>
-        <ul class="sub-group-list m-0">
-          <li><a href="#">2nd level nav item</a></li>
-          <li><a href="#">2nd level nav item</a></li>
-          <li><a href="#">2nd level nav item</a></li>
-          <li>
-            <input id="sub-sub-group-3" type="checkbox" hidden />
-            <label for="sub-sub-group-3"><span class="fa fa-angle-right"></span> Third level</label>
-            <ul class="sub-sub-group-list m-0">
-              <li><a href="#">3rd level nav item</a></li>
-              <li><a href="#">3rd level nav item</a></li>
-              <li><a href="#">3rd level nav item</a></li>
-            </ul>
-          </li>
-        </ul>
-        </li>
-      </ul>
-      </li>
-      <li>
-      <input id="group-4" type="checkbox" hidden />
-      <label for="group-4" class="pl-0"><span class="fa fa-angle-right"></span> First level</label>
-      <ul class="group-list m-0">
-        <li>
-        <li><a href="#">1st level item</a></li>
-        <input id="sub-group-4" type="checkbox" hidden />
-        <label for="sub-group-4"><span class="fa fa-angle-right"></span> Second level</label>
-        <ul class="sub-group-list m-0">
-          <li><a href="#">2nd level nav item</a></li>
-          <li><a href="#">2nd level nav item</a></li>
-        </ul>
-        </li>
-      </ul>
-      </li>
+        {%endif%}
+      {%endfor%}
     </ul>
   </nav>
 </div>
