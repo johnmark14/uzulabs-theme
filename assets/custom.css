@@ -139,6 +139,11 @@ fieldset[disabled] .file-name {
   transition: transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
 }
 
+.text-hover.hover-black:after {
+  background-color: #0a0a0a;
+  bottom: 10px;
+}
+
 .text-hover:hover:after {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);

@@ -15,8 +15,16 @@
         transition: transform 0.4s ease-out;
     }
 
+    &.hover-black:after {
+        background-color: $black;
+        bottom: 10px;
+    }
+
     &:hover:after {
         transform: scaleX(1);
         transform-origin: bottom left;
-      }
+    }
+
+    
+
 }
