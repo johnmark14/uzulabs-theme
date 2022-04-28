@@ -1,10 +1,13 @@
 <div class="columns image-grid is-multiline mb-6">
     {% for product in collection.products%}
       <div  class="column is-3">
-        <a href="{{product.url}}">
-          <figure class="image is-4by5">
+        <figure class="image is-4by5">
+          <a href="{{product.url}}">
             <img src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
-          </figure>
+          </a>
+          <input type="button" class="is-uppercase is-size-7 py-3" value="Add to cart">
+        </figure>
+        <a href="{{product.url}}">
           <div class="product-meta mt-2">
             <p class="title product-title has-text-centered">{{product.title}}</p>
             <span class="product-price has-text-weight-light has-text-centered">{{ product.price | money_without_trailing_zeros }}</span>

@@ -2,6 +2,30 @@
     figure.image {
         margin: 0;
         img {object-fit: cover;}
+        position: relative;
+
+        &:hover input {
+            opacity: 1;
+        }
+
+        input {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: inline-block;
+            width: 100%;
+            opacity: 0;
+            background-color: $black;
+            color: $white;
+            z-index: 10;
+            cursor: pointer;
+
+            // &:hover {
+            //     outline: 1px solid $white;
+            //     outline-offset: -5px;
+            //     font-weight: $weight-medium;
+            // }
+        }
     }
     .product-meta {
         p {margin: 0;}

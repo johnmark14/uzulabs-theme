@@ -198,5 +198,14 @@
     <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
     <li id="a11y-slideshow-info">{{ 'home_page.slideshow.navigation_instructions' | t }}</li>
   </ul>
+  {%comment%}
+  <script>
+    {% unless customer %}
+     {%if request.page_type != 'customers/login' %}
+      window.location.replace("/account/login");
+      {%endif%}
+    {% endunless %}
+  </script>
+  {%endcomment%}
 </body>
 </html>

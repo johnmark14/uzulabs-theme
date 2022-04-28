@@ -1832,11 +1832,29 @@ fieldset[disabled] .file-name {
 
 .image-grid figure.image {
   margin: 0;
+  position: relative;
 }
 
 .image-grid figure.image img {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.image-grid figure.image:hover input {
+  opacity: 1;
+}
+
+.image-grid figure.image input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  width: 100%;
+  opacity: 0;
+  background-color: #0a0a0a;
+  color: white;
+  z-index: 10;
+  cursor: pointer;
 }
 
 .image-grid .product-meta p {
