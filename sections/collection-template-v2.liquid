@@ -1,11 +1,15 @@
 <!-- /templates/collection.liquid -->
 <style>
   .collection-page .hero {
+    {%if collection.featured_image != blank %}
     background-image: url('{{collection.featured_image | img_url: "master"}}');
+    {%else%}
+    background-image: url('{{section.settings.featured_image | img_url: "master"}}');
+    {%endif%}
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
-    {%if section.settings.show_collection_image != true%}
+    {%if section.settings.show_collection_image != true and section.settings.featured_image == blank %}
     display: none;
     {%endif%}
   }
@@ -19,7 +23,7 @@
   <div class="wrapper">
     <nav class="breadcrumb is-small" aria-label="breadcrumbs">
       <ul class="ml-0">
-        <li><a href="#" class="is-uppercase">Home</a></li>
+        <li><a href="{{routes.root_url}}" class="is-uppercase">Home</a></li>
         <li><a href="#" class="is-uppercase">Categories</a></li>
         <li><a href="#" class="is-uppercase">Steel Drinkware</a></li>
         <li class="is-active is-uppercase"><a href="#" aria-current="page">Pets</a></li>
@@ -59,6 +63,12 @@
       "id": "show_collection_image",
       "label": "Show collection image",
       "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Collection Featured Image",
+      "info": "This image will be shown if collection image is blank"
     },
     {
       "type": "header",
