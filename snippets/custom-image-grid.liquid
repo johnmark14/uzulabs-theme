@@ -1,42 +1,44 @@
 <div class="columns image-grid is-multiline mb-6">
     {% for product in collection.products%}
-      <div  class="column is-3">
-        <figure class="image is-4by5">
+      <div class="column is-3">
+        <div class="content">
+          <figure class="image is-4by5" style="background-image: url({{product.images[1] | img_url: 'master'}})">
+            <a href="{{product.url}}">
+              <img src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
+            </a>
+            <input type="button" class="is-uppercase is-size-7 py-2" value="Add to cart">
+          </figure>
           <a href="{{product.url}}">
-            <img src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
-          </a>
-          <input type="button" class="is-uppercase is-size-7 py-3" value="Add to cart">
-        </figure>
-        <a href="{{product.url}}">
-          <div class="product-meta mt-2">
-            <p class="title product-title has-text-centered">{{product.title}}</p>
-            <span class="product-price has-text-weight-light has-text-centered">{{ product.price | money_without_trailing_zeros }}</span>
-          </div>
-        </a>
-        <div class="product-swatches is-flex is-justify-content-center is-align-items-center">
-          {%assign variants_hidden = 0%}
-          {% for variant in product.variants %}
-            {%if variant.metafields.image_color.value.value != blank%}
-              {%assign variants_hidden = variants_hidden | plus:1 %}
-              {%if variants_hidden <= 5%}
-              <div class="product-wrapper">
-                {%render 'custom-product-swatch' background_image: variant.metafields.image_color.value.value%}
-              </div>
-              {%endif%}
-            {%elsif variant.metafields.color.value.value != blank%}
-              {%assign variants_hidden = variants_hidden | plus:1 %}
-              {%if variants_hidden <= 5%}
-              <div class="product-wrapper">
-                {%render 'custom-product-swatch' background_color: variant.metafields.color.value.value%}
-              </div>
-              {%endif%}
-            {%endif%}
-          {%endfor%}
-          {%if variants_hidden > 5 %}
-            <div class="variant-count has-text-weight-light">
-              +{{variants_hidden | minus: 5}}
+            <div class="product-meta mt-2">
+              <p class="title product-title has-text-centered">{{product.title}}</p>
+              <span class="product-price has-text-weight-light has-text-centered">{{ product.price | money_without_trailing_zeros }}</span>
             </div>
-          {%endif%}
+          </a>
+          <div class="product-swatches is-flex is-justify-content-center is-align-items-center">
+            {%assign variants_hidden = 0%}
+            {% for variant in product.variants %}
+              {%if variant.metafields.image_color.value.value != blank%}
+                {%assign variants_hidden = variants_hidden | plus:1 %}
+                {%if variants_hidden <= 5%}
+                <a href="{{variant.url}}" class="product-wrapper">
+                  {%render 'custom-product-swatch' background_image: variant.metafields.image_color.value.value%}
+                </a>
+                {%endif%}
+              {%elsif variant.metafields.color.value.value != blank%}
+                {%assign variants_hidden = variants_hidden | plus:1 %}
+                {%if variants_hidden <= 5%}
+                <a href="{{variant.url}}" class="product-wrapper">
+                  {%render 'custom-product-swatch' background_color: variant.metafields.color.value.value%}
+                </a>
+                {%endif%}
+              {%endif%}
+            {%endfor%}
+            {%if variants_hidden > 5 %}
+              <div class="variant-count has-text-weight-light">
+                +{{variants_hidden | minus: 5}}
+              </div>
+            {%endif%}
+          </div>
         </div>
       </div>
     {%endfor%}
