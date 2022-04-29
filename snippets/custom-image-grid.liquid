@@ -3,10 +3,10 @@
       <div class="column is-3">
         <div class="content">
           <figure class="image is-4by5" style="background-image: url({{product.images[1] | img_url: 'master'}})">
+            <input type="button" class="is-uppercase is-size-7 py-2" value="Add to cart">
             <a href="{{product.url}}">
               <img src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
             </a>
-            <input type="button" class="is-uppercase is-size-7 py-2" value="Add to cart">
           </figure>
           <a href="{{product.url}}">
             <div class="product-meta mt-2">

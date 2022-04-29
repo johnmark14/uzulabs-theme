@@ -1876,8 +1876,8 @@ fieldset[disabled] .file-name {
 .image-grid figure.image img {
   -o-object-fit: cover;
      object-fit: cover;
-  -webkit-transition: .2s ease-out;
-  transition: .2s ease-out;
+  -webkit-transition: .3s ease-out;
+  transition: .3s ease-out;
 }
 
 .image-grid figure.image:hover input {
@@ -1898,8 +1898,8 @@ fieldset[disabled] .file-name {
   color: white;
   z-index: 10;
   cursor: pointer;
-  -webkit-transition: all .2s ease-out;
-  transition: all .2s ease-out;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
 }
 
 .image-grid figure.image input:hover {
@@ -1908,6 +1908,10 @@ fieldset[disabled] .file-name {
   color: #0a0a0a;
   font-weight: 500;
   opacity: 1;
+}
+
+.image-grid figure.image input:hover + a > img {
+  opacity: 1 !important;
 }
 
 .image-grid .product-meta p {
