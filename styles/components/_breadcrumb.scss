@@ -13,6 +13,7 @@ $breadcrumb-item-separator-color: $border-hover !default;
   @extend %block;
 
   @extend %unselectable;
+  opacity: 0;
 
   font-size: $size-normal;
   white-space: nowrap;

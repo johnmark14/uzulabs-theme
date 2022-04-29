@@ -2170,6 +2170,7 @@ fieldset[disabled] .file-name {
 }
 
 .breadcrumb {
+  opacity: 0;
   font-size: 1rem;
   white-space: nowrap;
 }
