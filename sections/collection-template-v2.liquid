@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="column has-text-centered">
-        <h2 class="title is-uppercase is-size-5 pb-3">Steel Drinkware/Pets</h2>
+        <h2 class="title collection_title is-uppercase is-size-5 pb-3"></h2>
         {% render 'custom-image-grid' collection: collection %}
       </div>
     </div>
@@ -54,6 +54,8 @@
 <script>
   // A $( document ).ready() block.
 $( document ).ready(function() {
+  // Breadcrumb Links
+  // Main>Childlink>Grandchildlink
   $.urlParam = function(name){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results==null) {
@@ -61,14 +63,35 @@ $( document ).ready(function() {
     }
     return decodeURI(results[1]) || 0;
   }
+
+  let breadTitle = function(str) {
+    return str.replaceAll('_', ' ');
+  }
+
+  const MAIN = $.urlParam('main'),
+    CHILDLINK = $.urlParam('childlink'),
+    GRANDCHILDLINK = $.urlParam('grandchildlink'),
+    TITLE = $.urlParam('title') || "{{collection.title}}";
+  
+  let categories = "";
   
   $breadcrumbs = $('.breadcrumb');
-
-  $breadcrumbs.find('ul').append(`<li><a href="/collections/${$.urlParam('main')}" class="is-uppercase">${$.urlParam('title')}</a></li>`);
-
-  
-  
+  if(MAIN) {
+    $breadcrumbs.find('ul').append(`<li><a href="/collections/${MAIN}" class="is-uppercase">${breadTitle(MAIN)}</a></li>`);
+    categories = breadTitle(MAIN);
+  }
+  if(CHILDLINK) {
+    $breadcrumbs.find('ul').append(`<li><a href="/collections/${CHILDLINK}" class="is-uppercase">${breadTitle(CHILDLINK)}</a></li>`);
+    categories = breadTitle(CHILDLINK);
+  }
+  if(GRANDCHILDLINK) {
+    $breadcrumbs.find('ul').append(`<li><a href="/collections/${GRANDCHILDLINK}" class="is-uppercase">${breadTitle(GRANDCHILDLINK)}</a></li>`);
+    categories = breadTitle(GRANDCHILDLINK);
+  }
+  $breadcrumbs.find('ul').append(`<li class="is-active"><a href="/collections/${TITLE}" class="is-uppercase">${TITLE}</a></li>`);
+  if(breadTitle(categories) === TITLE) categories = "";
   $breadcrumbs.css('opacity', '1');
+  $('h2.collection_title').text(`${(categories != "") ? categories+"/"+TITLE : TITLE}`);
 });
 </script>
 {% schema %}

@@ -183,7 +183,7 @@
                       aria-haspopup="true"
                       data-meganav-type="parent">
                       <a
-                        href="{{ link.url }}?main={{link.handle}}&title={{link.title}}"
+                        href="{{ link.url }}?title={{link.title}}"
                         class="site-nav__link"
                         data-meganav-type="parent"
                         aria-controls="MenuParent-{{ parent_index }}"
@@ -249,7 +249,7 @@
                   {% else %}
                     <li class="site-nav__item{% if link.active %} site-nav--active{% endif %}">
                       <a
-                        href="{{ link.url }}?main={{link.handle}}&title={{link.title}}"
+                        href="{{ link.url }}?title={{link.title}}"
                         class="site-nav__link"
                         data-meganav-type="child"
                         {% unless request.page_type == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless%}>
