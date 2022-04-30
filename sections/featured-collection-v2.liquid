@@ -69,7 +69,7 @@
                 <img class="lazyload fade-in {% unless forloop.first == true %} lazypreload{% endunless %}" src="{{collection.image | img_url: 'master'}}">
                 <div class="product-info has-text-centered">
                   <p class="title mb-1">{{collection.title}}</p>
-                  {%include 'price-on-display'%}
+                  {%render 'price-on-display'%}
                 </div>
               </a>
             {%else%}

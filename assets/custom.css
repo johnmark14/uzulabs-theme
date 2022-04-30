@@ -7244,51 +7244,62 @@ fieldset[disabled] .select select:hover {
      object-fit: scale-down;
 }
 
-.collection-page .column .product-search .field .icon.icon-search {
+.collection-page .column .product-search .field .icon.icon-search,
+.list-collection-page .column .product-search .field .icon.icon-search {
   top: 8px;
   right: -12px;
   color: #0a0a0a;
 }
 
-.collection-page .column .product-search .field .control input {
+.collection-page .column .product-search .field .control input,
+.list-collection-page .column .product-search .field .control input {
   border-radius: 0;
   border-color: #0a0a0a;
 }
 
-.collection-page .column .product-search .field .control input::-webkit-input-placeholder {
+.collection-page .column .product-search .field .control input::-webkit-input-placeholder,
+.list-collection-page .column .product-search .field .control input::-webkit-input-placeholder {
   color: #0a0a0a;
 }
 
-.collection-page .column .product-search .field .control input:-ms-input-placeholder {
+.collection-page .column .product-search .field .control input:-ms-input-placeholder,
+.list-collection-page .column .product-search .field .control input:-ms-input-placeholder {
   color: #0a0a0a;
 }
 
-.collection-page .column .product-search .field .control input::-ms-input-placeholder {
+.collection-page .column .product-search .field .control input::-ms-input-placeholder,
+.list-collection-page .column .product-search .field .control input::-ms-input-placeholder {
   color: #0a0a0a;
 }
 
-.collection-page .column .product-search .field .control input::placeholder {
+.collection-page .column .product-search .field .control input::placeholder,
+.list-collection-page .column .product-search .field .control input::placeholder {
   color: #0a0a0a;
 }
 
-.collection-page .column .product-swatches {
+.collection-page .column .product-swatches,
+.list-collection-page .column .product-swatches {
   height: 30px;
 }
 
-.collection-page .column .product-swatches .product-wrapper {
+.collection-page .column .product-swatches .product-wrapper,
+.list-collection-page .column .product-swatches .product-wrapper {
   width: 18px;
   height: 18px;
 }
 
-.collection-page .column .product-swatches .product-wrapper:not(:last-child) {
+.collection-page .column .product-swatches .product-wrapper:not(:last-child),
+.list-collection-page .column .product-swatches .product-wrapper:not(:last-child) {
   margin-right: 4px;
 }
 
-.collection-page .column .product-swatches .product-wrapper:hover {
+.collection-page .column .product-swatches .product-wrapper:hover,
+.list-collection-page .column .product-swatches .product-wrapper:hover {
   position: relative;
 }
 
-.collection-page .column .product-swatches .product-wrapper:hover .swatch-active::after {
+.collection-page .column .product-swatches .product-wrapper:hover .swatch-active::after,
+.list-collection-page .column .product-swatches .product-wrapper:hover .swatch-active::after {
   content: "";
   cursor: pointer;
   width: 14px;
@@ -7300,7 +7311,8 @@ fieldset[disabled] .select select:hover {
   position: absolute;
 }
 
-.collection-page .column .product-swatches .variant-count {
+.collection-page .column .product-swatches .variant-count,
+.list-collection-page .column .product-swatches .variant-count {
   padding-top: 2px;
   font-size: 12px;
 }

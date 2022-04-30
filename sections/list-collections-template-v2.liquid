@@ -1,6 +1,8 @@
 <!-- /templates/collection.liquid -->
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <style>
-  .collection-page .hero {
+  .list-collection-page .hero {
     {%if collection.featured_image != blank %}
     background-image: url('{{collection.featured_image | img_url: "master"}}');
     {%else%}
@@ -24,7 +26,6 @@
     <nav class="breadcrumb is-small" aria-label="breadcrumbs">
       <ul class="ml-0">
         <li><a href="{{routes.root_url}}" class="is-uppercase">Home</a></li>
-        <li><a href="/collections" class="is-uppercase">Categories</a></li>
       </ul>
     </nav>
     <div class="columns is-variable is-8-widescreen">
@@ -45,13 +46,16 @@
         </div>
       </div>
       <div class="column has-text-centered">
-        <h2 class="title collection_title is-uppercase is-size-5 pb-3"></h2>
-        {% render 'custom-image-grid' collection: collection %}
+        {% for collection in collections limit: 1%}
+          <div class="container collections-wrapper">
+            <h2 class="title collection_title is-uppercase is-size-5 pb-3">{{collection.title}}</h2>
+            {% render 'custom-carousel-grid', collection: collection, index: forloop.index %}
+          </div>
+        {%endfor%}
       </div>
     </div>
   </div>
 </section>
-
 <script>
   // A $( document ).ready() block.
 $( document ).ready(function() {
@@ -69,32 +73,23 @@ $( document ).ready(function() {
     return str.replaceAll('_', ' ');
   }
 
-  const MAIN = $.urlParam('main'),
-    CHILDLINK = $.urlParam('childlink'),
-    GRANDCHILDLINK = $.urlParam('grandchildlink'),
-    TITLE = $.urlParam('title') || "{{collection.title}}";
-  
-  let categories = "";
+  const TITLE = $.urlParam('title') || "{{collection.title}}";
   
   $breadcrumbs = $('.breadcrumb');
-  if(MAIN) {
-    $breadcrumbs.find('ul').append(`<li><a href="/collections?title=${MAIN}" class="is-uppercase">${breadTitle(MAIN)}</a></li>`);
-    categories = breadTitle(MAIN);
+  if(TITLE) {
+    $breadcrumbs.find('ul').append(`<li><a href="/collections" class="is-uppercase">Categories</a></li>`);
+    $breadcrumbs.find('ul').append(`<li class="is-active"><a class="is-uppercase">${breadTitle(TITLE)}</a></li>`);
+  }else {
+    $breadcrumbs.find('ul').append(`<li class="is-active"><a class="is-uppercase">Categories</a></li>`);
   }
-  if(CHILDLINK) {
-    $breadcrumbs.find('ul').append(`<li><a href="/collections?title=${CHILDLINK}" class="is-uppercase">${breadTitle(CHILDLINK)}</a></li>`);
-    categories = breadTitle(CHILDLINK);
-  }
-  $breadcrumbs.find('ul').append(`<li class="is-active"><a href="/collections/${TITLE}" class="is-uppercase">${TITLE}</a></li>`);
-  if(breadTitle(categories) === TITLE) categories = "";
   $breadcrumbs.css('opacity', '1');
-  $('h2.collection_title').text(`${(categories != "") ? categories+"/"+TITLE : TITLE}`);
+  $('h2.collection_title').text(`${(TITLE != "") ? TITLE : "Categories"}`);
 });
 </script>
 {% schema %}
 {
-  "name": "Collection pages v2",
-  "class": "collection-page",
+  "name": "List Collection v2",
+  "class": "list-collection-page",
   "settings": [
     {
       "type": "checkbox",
