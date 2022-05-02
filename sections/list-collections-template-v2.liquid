@@ -46,10 +46,13 @@
         </div>
       </div>
       <div class="column has-text-centered">
-        {% for collection in collections limit: 1%}
-          <div class="container collections-wrapper">
-            <h2 class="title collection_title is-uppercase is-size-5 pb-3">{{collection.title}}</h2>
+        {% for collection in collections%}
+          <div class="container collections-wrapper" {%if collection.products_count == 0%} style="display: none;" {%endif%} {%if collection.metafields.collection.parent.value != blank %} data-attr="{{-collection.metafields.collection.parent.value-}}" {%endif%}>
+            <h2 class="title collection-title is-uppercase is-size-5 pb-3">{{collection.title}}</h2>
             {% render 'custom-carousel-grid', collection: collection, index: forloop.index %}
+            <div class="has-text-centered mt-6">
+              <a href="{{collection.url}}" class="btn hero__cta">View more</a>
+            </div>
           </div>
         {%endfor%}
       </div>
@@ -73,7 +76,7 @@ $( document ).ready(function() {
     return str.replaceAll('_', ' ');
   }
 
-  const TITLE = $.urlParam('title') || "{{collection.title}}";
+  const TITLE = $.urlParam('title') || "Categories";
   
   $breadcrumbs = $('.breadcrumb');
   if(TITLE) {
@@ -83,7 +86,18 @@ $( document ).ready(function() {
     $breadcrumbs.find('ul').append(`<li class="is-active"><a class="is-uppercase">Categories</a></li>`);
   }
   $breadcrumbs.css('opacity', '1');
-  $('h2.collection_title').text(`${(TITLE != "") ? TITLE : "Categories"}`);
+  // $('h2.collection_title').text(`${(TITLE != "") ? TITLE : "Categories"}`);
+  $('.container.collections-wrapper').each(function() {
+    $this = $(this);
+    var dataAttribute = $this.attr("data-attr") || "";
+    $title = $this.find('.title.collection-title');
+    if(dataAttribute.toLowerCase() != TITLE.toLowerCase() && TITLE != "Categories") {
+     $this.remove();
+    }
+    if(TITLE != "Categories") {
+      $title.text(`${(TITLE != $title.text()) ? TITLE+"/"+$title.text() : $title.text()}`);
+    }
+  });
 });
 </script>
 {% schema %}

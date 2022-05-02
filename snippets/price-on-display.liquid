@@ -1,4 +1,4 @@
-{%- if block.settings.product.compare_at_price > block.settings.product.price -%}
+{%- if product.compare_at_price > product.price -%}
     {%- if settings.currency_code_enabled -%}
         <span class="has-text-weight-light">{{ product.price | money_with_currency }}</span>
         <span class="has-text-weight-light">{{product.compare_at_price | money_with_currency }}</span>
@@ -16,7 +16,7 @@
     {%- endif -%}
 
     <span class="has-text-weight-light">{{ 'collection.product.from_price_html' | t: min_price: formatted_min_price, max_price: formatted_max_price }}</span>
-    {%- else -%}
+{%- else -%}
     {%- if settings.currency_code_enabled -%}
         <span class="has-text-weight-light">{{ product.price | money_with_currency }}</span>
     {%- else -%}

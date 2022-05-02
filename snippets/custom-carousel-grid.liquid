@@ -1,62 +1,33 @@
 <!-- Slider main container -->
 <!-- Swiper -->
-<style>
-    .swiper {
-        width: 100%;
-        height: 300px;
-      }
-
-      .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-      }
-
-      .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-</style>
 <div class="swiper mySwiper-{{index}}">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      <div class="swiper-slide">Slide 4</div>
-      <div class="swiper-slide">Slide 5</div>
-      <div class="swiper-slide">Slide 6</div>
-      <div class="swiper-slide">Slide 7</div>
-      <div class="swiper-slide">Slide 8</div>
-      <div class="swiper-slide">Slide 9</div>
+    {%for product in collection.products limit: 12%}
+      <div class="swiper-slide">
+        <img class="lazyload fade-in" src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
+        <div class="product-info has-text-centered">
+          <p class="title mb-1">{{product.title}}</p>
+          {%render 'price-on-display', product: product%}
+        </div>
+      </div>
+    {% endfor %}
     </div>
-    <div class="swiper-pagination swiper-pagination-{{index}}"></div>
-</div>
-<div class="has-text-centered mt-6">
-    <a href="{{collection.url}}" class="btn hero__cta">View more</a>
+    <!-- <div class="swiper-pagination swiper-pagination-{{index}}"></div> -->
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev swiper-button-prev-collection-{{index}}" style="color: inherit;"></div>
+    <div class="swiper-button-next swiper-button-next-collection-{{index}}" style="color: inherit;"></div>
 </div>
 <script>
-   var swiper = new Swiper(".mySwiper-{{index}}", {
-        slidesPerView: 3,
-        spaceBetween: 10,
-        pagination: {
-          el: ".swiper-pagination-{{index}}",
-          clickable: true,
-        },
-    });
+new Swiper(".mySwiper-{{index}}", {
+    slidesPerView: 4,
+    spaceBetween: 5,
+    pagination: {
+      el: ".swiper-pagination-{{index}}",
+      clickable: true,
+    },
+    navigation: {
+    nextEl: '.swiper-button-next-collection-{{index}}',
+    prevEl: '.swiper-button-prev-collection-{{index}}',
+  },
+});
 </script>

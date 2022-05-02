@@ -48,7 +48,7 @@
                     <img class="lazyload fade-in {% unless forloop.first == true %} lazypreload{% endunless %}" src="{{product.first_available_variant.image | img_url: 'master'}}">
                     <div class="product-info has-text-centered">
                       <p class="title mb-1">{{product.title}}</p>
-                      {%include 'price-on-display'%}
+                      {%include 'price-on-display', product: product%}
                     </div>
                   </a>
                 {%else%}
