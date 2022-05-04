@@ -19,7 +19,7 @@
 </div>
 <script>
 new Swiper(".mySwiper-{{index}}", {
-    slidesPerView: 4,
+    slidesPerView: 1,
     spaceBetween: 5,
     pagination: {
       el: ".swiper-pagination-{{index}}",
@@ -29,5 +29,19 @@ new Swiper(".mySwiper-{{index}}", {
     nextEl: '.swiper-button-next-collection-{{index}}',
     prevEl: '.swiper-button-prev-collection-{{index}}',
   },
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+    },
+    768: {
+        slidesPerView: 3,
+    },
+    1024: {
+        slidesPerView: 4,
+    },
+    1680: {
+        slidesPerView: 5,
+    }
+  }
 });
 </script>

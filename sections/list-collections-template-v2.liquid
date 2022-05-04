@@ -28,8 +28,8 @@
         <li><a href="{{routes.root_url}}" class="is-uppercase">Home</a></li>
       </ul>
     </nav>
-    <div class="columns is-variable is-8-widescreen">
-      <div class="column is-one-fifth">
+    <div class="columns is-variable is-8-widescreen is-desktop">
+      <div class="column is-one-fifth-desktop is-hidden-touch">
         <h2 class="title is-uppercase is-size-5 pb-3">{{section.settings.text}}</h2>
         <div class="product-search">
           <div class="field">
@@ -45,9 +45,9 @@
           {% render 'custom-side-accordion' %}
         </div>
       </div>
-      <div class="column has-text-centered">
+      <div class="column is-four-fifths-desktop has-text-centered">
         {% for collection in collections%}
-          <div class="container collections-wrapper" {%if collection.products_count == 0%} style="display: none;" {%endif%} {%if collection.metafields.collection.parent.value != blank %} data-attr="{{-collection.metafields.collection.parent.value-}}" {%endif%}>
+          <div class="collections-wrapper" {%if collection.products_count == 0%} style="display: none;" {%endif%} {%if collection.metafields.collection.parent.value != blank %} data-attr="{{-collection.metafields.collection.parent.value-}}" {%endif%}>
             <h2 class="title collection-title is-uppercase is-size-5 pb-3">{{collection.title}}</h2>
             {% render 'custom-carousel-grid', collection: collection, index: forloop.index %}
             <div class="has-text-centered mt-6">
@@ -87,7 +87,7 @@ $( document ).ready(function() {
   }
   $breadcrumbs.css('opacity', '1');
   // $('h2.collection_title').text(`${(TITLE != "") ? TITLE : "Categories"}`);
-  $('.container.collections-wrapper').each(function() {
+  $('.collections-wrapper').each(function() {
     $this = $(this);
     var dataAttribute = $this.attr("data-attr") || "";
     $title = $this.find('.title.collection-title');

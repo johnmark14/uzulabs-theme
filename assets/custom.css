@@ -2165,6 +2165,10 @@ fieldset[disabled] .file-name {
   border-radius: 50%;
 }
 
+.list-collection-page {
+  width: 100%;
+}
+
 .list-collection-page .swiper {
   width: 100%;
 }
