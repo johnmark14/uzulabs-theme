@@ -51,7 +51,7 @@
             <h2 class="title collection-title is-uppercase is-size-5 pb-3">{{collection.title}}</h2>
             {% render 'custom-carousel-grid', collection: collection, index: forloop.index %}
             <div class="has-text-centered mt-6">
-              <a href="{{collection.url}}" class="btn hero__cta">View more</a>
+              <a href="{{collection.url}}" class="btn hero__cta"><span class="text-hover">View more</span></a>
             </div>
           </div>
         {%endfor%}
@@ -95,6 +95,7 @@ $( document ).ready(function() {
      $this.remove();
     }
     if(TITLE != "Categories") {
+      $this.find('.btn').attr('href',`${$this.find('.btn').attr('href')}?main=${TITLE}&title=${$title.text()}`);
       $title.text(`${(TITLE != $title.text()) ? TITLE+"/"+$title.text() : $title.text()}`);
     }
   });

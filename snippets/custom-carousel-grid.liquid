@@ -3,13 +3,13 @@
 <div class="swiper mySwiper-{{index}}">
     <div class="swiper-wrapper">
     {%for product in collection.products limit: 12%}
-      <div class="swiper-slide">
+      <a href="{{product.url}}" class="swiper-slide">
         <img class="lazyload fade-in" src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
         <div class="product-info has-text-centered">
           <p class="title mb-1">{{product.title}}</p>
           {%render 'price-on-display', product: product%}
         </div>
-      </div>
+      </a>
     {% endfor %}
     </div>
     <!-- <div class="swiper-pagination swiper-pagination-{{index}}"></div> -->

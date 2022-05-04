@@ -1880,11 +1880,11 @@ fieldset[disabled] .file-name {
   transition: .3s ease-out;
 }
 
-.image-grid figure.image:hover input {
+.image-grid figure.image:hover button {
   opacity: 1;
 }
 
-.image-grid figure.image input {
+.image-grid figure.image button {
   position: absolute;
   bottom: 10px;
   left: 50%;
@@ -1892,7 +1892,7 @@ fieldset[disabled] .file-name {
           transform: translate(-50%);
   display: inline-block;
   width: 80%;
-  max-width: 150px;
+  max-width: 180px;
   opacity: 0;
   background-color: #0a0a0a;
   color: white;
@@ -1902,15 +1902,11 @@ fieldset[disabled] .file-name {
   transition: all .3s ease-out;
 }
 
-.image-grid figure.image input:hover {
-  background-color: white;
-  border: 1px solid #0a0a0a;
-  color: #0a0a0a;
-  font-weight: 500;
+.image-grid figure.image button:hover {
   opacity: 1;
 }
 
-.image-grid figure.image input:hover + a > img {
+.image-grid figure.image button:hover + a > img {
   opacity: 1 !important;
 }
 
@@ -1934,7 +1930,7 @@ fieldset[disabled] .file-name {
   opacity: 1;
 }
 
-.image-grid .column .content figure.image:hover .column .content input {
+.image-grid .column .content figure.image:hover .column .content button {
   opacity: 1;
 }
 
