@@ -10,41 +10,23 @@
             <label for="group-1" class="pl-1 is-size-7 has-text-weight-medium is-uppercase">
               <span class="icon-closed">+</span><span class="icon-open">-</span>{{link.title}}</label>
             <ul class="group-list m-0">
-              {% for sub_link in link.links %}
-                {% if sub_link.levels > 0 %}
+              {% for childlink in link.links %}
+                {% if childlink.levels > 0 %}
                   <!-- If we're dealing with a mega menu -->
                   <li>
                     <input id="sub-group-1" type="checkbox" hidden />
                     <label for="sub-group-1" class="is-size-7 has-text-weight-medium is-uppercase">
-                      <span class="icon-closed">+</span><span class="icon-open">-</span>{{sub_link.title}}</label>
+                      <span class="icon-closed">+</span><span class="icon-open">-</span>{{childlink.title}}</label>
                     <ul class="sub-group-list m-0">
-                      {%for super_sub_link in sub_link.links %}
-                        {%if super_sub_link.levels > 0%}
-                          <!-- If we're dealing with a mega menu -->
-                          <li>
-                            <input id="sub-sub-group-1" type="checkbox" hidden />
-                            <label for="sub-sub-group-1" class="is-size-7 has-text-weight-medium is-uppercase">
-                              <span class="icon-closed">+</span><span class="icon-open">-</span>{{super_sub_link.title}}</label>
-                            <ul class="sub-sub-group-list m-0">
-                              {%for mega_sub_link in super_sub_link.links%}
-                                <li class="is-size-7 has-text-weight-medium is-uppercase">
-                                  <a href="{{mega_sub_link.url}}?main={{link.title}}&sub={{sub_link.title}}&super_sub={{super_sub_link.title}}">
-                                    {{mega_sub_link.title}}
-                                  </a>
-                                </li>
-                              {%endfor%}
-                            </ul>
-                          </li>
-                        {%else%}
-                          <!-- If we're not dealing with a mega menu -->
-                          <li class="is-size-7 has-text-weight-medium is-uppercase"><a href="{{super_sub_link.url}}?main={{link.title}}&sub={{sub_link.title}}">{{super_sub_link.title}}</a></li>
-                        {%endif%}
+                      {%for grandchildlink in childlink.links %}
+                        <!-- If we're not dealing with a mega menu -->
+                        <li class="is-size-7 has-text-weight-medium is-uppercase"><a href="{{grandchildlink.url}}?main={{link.title}}&sub_link={{childlink.title}}&title={{grandchildlink}}">{{grandchildlink.title}}</a></li>
                       {%endfor%}
                     </ul>
                   </li>
                 {%else%}
                   <!-- If we're not dealing with a mega menu -->
-                  <li class="is-size-7 has-text-weight-medium is-uppercase"><a href="{{sub_link.url}}?main={{link.title}}">{{sub_link.title}}</a></li>
+                  <li class="is-size-7 has-text-weight-medium is-uppercase"><a href="{{childlink.url}}?main={{link.title}}&title={{childlink.title}}">{{childlink.title}}</a></li>
                 {%endif%}
               {%endfor%}
             </ul>
@@ -52,7 +34,7 @@
         {%else%}
         <!-- If we're not dealing with mega menu -->
           <li class="is-size-7 has-text-weight-medium is-uppercase">
-            <a href="{{link.url}}" class="pl-1">{{link.title}}</a>
+            <a href="{{link.url}}?title={{link.title}}" class="pl-1">{{link.title}}</a>
           </li>
         {%endif%}
       {%endfor%}
