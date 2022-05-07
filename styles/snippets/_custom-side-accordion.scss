@@ -80,7 +80,8 @@
       }
       
       .nav__list input[type=checkbox]:checked + label + ul { /* reset the height when checkbox is checked */
-      max-height: 1000px; }
+        max-height: 1000px;
+      }
       
       /**
        * Rotating chevron icon
