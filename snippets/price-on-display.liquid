@@ -1,10 +1,10 @@
 {%- if product.compare_at_price > product.price -%}
     {%- if settings.currency_code_enabled -%}
-        <span class="has-text-weight-light">{{ product.price | money_with_currency }}</span>
-        <span class="has-text-weight-light">{{product.compare_at_price | money_with_currency }}</span>
+        <span class="has-text-weight-light 1">{{ product.price | money_with_currency }}</span>
+        <span class="has-text-weight-light 2">{{product.compare_at_price | money_with_currency }}</span>
     {%- else -%}
-        <span class="has-text-weight-light">{{ product.price | money }}</span>
-        <span class="has-text-weight-light">{{ product.compare_at_price | money }}</span>
+        <span class="has-text-weight-light 3">{{ product.price | money }}</span>
+        <span class="has-text-weight-light 4">{{ product.compare_at_price | money }}</span>
     {%- endif -%}
     {%- elsif product.price_varies -%}
     {%- if settings.currency_code_enabled -%}
@@ -15,11 +15,11 @@
         {%- capture formatted_max_price -%}{{ product.price_max | money }}{%- endcapture -%}
     {%- endif -%}
 
-    <span class="has-text-weight-light">{{ 'collection.product.from_price_html' | t: min_price: formatted_min_price, max_price: formatted_max_price }}</span>
+    <span class="has-text-weight-light 5">{{ formatted_min_price }}</span>
 {%- else -%}
     {%- if settings.currency_code_enabled -%}
-        <span class="has-text-weight-light">{{ product.price | money_with_currency }}</span>
+        <span class="has-text-weight-light 6">{{ product.price | money_with_currency }}</span>
     {%- else -%}
-        <span class="has-text-weight-light">{{ product.price | money }}</span>
+        <span class="has-text-weight-light 7">{{ product.price | money }}</span>
     {%- endif -%}
 {%- endif -%}
