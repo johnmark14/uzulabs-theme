@@ -1,17 +1,14 @@
 <!-- /templates/collection.liquid -->
 <style>
   .collection-page .hero {
-    {%if collection.featured_image != blank %}
-    background-image: url('{{collection.featured_image | img_url: "master"}}');
+    {%if collection.image != blank %}
+    background-image: url('{{collection.image | img_url: "master"}}');
     {%else%}
-    background-image: url('{{section.settings.featured_image | img_url: "master"}}');
+    display: none;
     {%endif%}
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
-    {%if section.settings.show_collection_image != true and section.settings.featured_image == blank %}
-    display: none;
-    {%endif%}
   }
 </style>
 <section class="hero is-medium is-link">
