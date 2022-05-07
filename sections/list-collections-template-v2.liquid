@@ -47,7 +47,7 @@
       </div>
       <div class="column is-four-fifths-desktop has-text-centered">
         {% for collection in collections%}
-          <div class="collections-wrapper" {%if collection.products_count == 0%} style="display: none;" {%endif%} {%if collection.metafields.collection.parent.value != blank %} data-attr="{{-collection.metafields.collection.parent.value-}}" {%endif%}>
+          <div class="collections-wrapper" {%if collection.products_count == 0%} style="display: none;" {%endif%} {%if collection.metafields.collection.parent.value != blank %} data-attr='{{collection.metafields.collection.parent.value | json }}' {%endif%}>
             <h2 class="title collection-title is-uppercase is-size-5 pb-3">{{collection.title}}</h2>
             {% render 'custom-carousel-grid', collection: collection, index: forloop.index %}
             <div class="has-text-centered mt-6">
@@ -89,11 +89,24 @@ $( document ).ready(function() {
   // $('h2.collection_title').text(`${(TITLE != "") ? TITLE : "Categories"}`);
   $('.collections-wrapper').each(function() {
     $this = $(this);
-    var dataAttribute = $this.attr("data-attr") || "";
-    $title = $this.find('.title.collection-title');
-    if(dataAttribute.toLowerCase() != TITLE.toLowerCase() && TITLE != "Categories") {
-     $this.remove();
+    var dataAttribute = $this.data("attr") || ["blank"];
+    let remove = false;
+    console.log('###########');
+    $.each(dataAttribute, (index, value) => {
+      console.log(value);
+      if(value.toLowerCase() != TITLE.toLowerCase() && TITLE != "Categories") {
+        remove = true;
+      } else {
+        remove = false;
+        return false;
+      }
+    });
+    console.log('##############');
+    if(remove) {
+      $this.remove();
     }
+    $title = $this.find('.title.collection-title');
+
     if(TITLE != "Categories") {
       $this.find('.btn').attr('href',`${$this.find('.btn').attr('href')}?main=${TITLE}&title=${$title.text()}`);
       $title.text(`${(TITLE != $title.text()) ? TITLE+"/"+$title.text() : $title.text()}`);
