@@ -1867,7 +1867,7 @@ fieldset[disabled] .file-name {
 
 .image-grid figure.image {
   margin: 0;
-  background-size: cover;
+  background-size: 0 0;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
@@ -1918,6 +1918,11 @@ fieldset[disabled] .file-name {
   opacity: 0;
   -webkit-transition: opacity .3s ease-out;
   transition: opacity .3s ease-out;
+}
+
+.image-grid .column .content:hover figure.image,
+.image-grid .column .content:hover figure.image {
+  background-size: cover;
 }
 
 .image-grid .column .content:hover figure.image img,

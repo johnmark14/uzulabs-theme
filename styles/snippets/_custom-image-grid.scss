@@ -1,7 +1,7 @@
 .image-grid {
     figure.image {
         margin: 0;
-        background-size: cover;
+        background-size: 0 0;
         background-repeat: no-repeat;
         background-position: center;
         position: relative;
@@ -54,6 +54,9 @@
 
     .column .content:hover,
     .column .content:hover {
+        figure.image {
+            background-size: cover;
+        }
         figure.image img{
             opacity: 0;
         }

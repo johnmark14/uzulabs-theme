@@ -6,16 +6,16 @@
         {%if link.levels > 0 %}
           <!-- If we're dealing with mega menu -->
           <li>
-            <input id="group-1" type="checkbox" hidden />
-            <label for="group-1" class="pl-1 is-size-7 has-text-weight-medium is-uppercase">
+            <input id="group-{{forloop.index}}" type="checkbox" hidden />
+            <label for="group-{{forloop.index}}" class="pl-1 is-size-7 has-text-weight-medium is-uppercase">
               <span class="icon-closed">+</span><span class="icon-open">-</span>{{link.title}}</label>
             <ul class="group-list m-0">
               {% for childlink in link.links %}
                 {% if childlink.levels > 0 %}
                   <!-- If we're dealing with a mega menu -->
                   <li>
-                    <input id="sub-group-1" type="checkbox" hidden />
-                    <label for="sub-group-1" class="is-size-7 has-text-weight-medium is-uppercase">
+                    <input id="sub-group-{{forloop.index}}" type="checkbox" hidden />
+                    <label for="sub-group-{{forloop.index}}" class="is-size-7 has-text-weight-medium is-uppercase">
                       <span class="icon-closed">+</span><span class="icon-open">-</span>{{childlink.title}}</label>
                     <ul class="sub-group-list m-0">
                       {%for grandchildlink in childlink.links %}
