@@ -19,8 +19,13 @@
   {% endcomment %}
   {%- style -%}
     .hero-{{ section.id }} {
-      height: {{- wrapper_height -}}vw !important;
+      height: 80vh;
       overflow: hidden;
+    }
+    @media screen and (max-width: 1050px) {
+      .hero-{{ section.id }} {
+        height: unset;
+      }
     }
     .hero-{{ section.id }} .slick-track,
     .hero-{{ section.id }} .slideshow__overlay:before {
