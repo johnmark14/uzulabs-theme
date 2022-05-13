@@ -87,7 +87,6 @@ $( document ).ready(function() {
     $this = $(this);
     var dataAttribute = $this.data("attr") || ["blank"];
     let remove = false;
-    console.log('###########');
     $.each(dataAttribute, (index, value) => {
       console.log(value);
       if(value.toLowerCase() != TITLE.toLowerCase() && TITLE != "Categories") {
@@ -97,7 +96,6 @@ $( document ).ready(function() {
         return false;
       }
     });
-    console.log('##############');
     if(remove) {
       $this.remove();
     }

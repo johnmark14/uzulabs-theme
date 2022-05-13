@@ -4,11 +4,11 @@
         <div class="content">
           <figure class="image is-4by5" {% if product.metafields.products.preview_image.value != blank %} style="background-image: url({{product.metafields.products.preview_image.value | img_url: 'master'}}) {%endif%}">
             <!-- <button type="button" class="is-uppercase is-size-7 py-2"><span class="text-hover">Add to cart</span></button> -->
-            <a href="{{product.first_available_variant.url}}">
+            <a href="{{product.first_available_variant.url}}" data-product-link data-title="{{product.title}}">
               <img {% if product.metafields.products.preview_image.value == blank %} style="opacity: 1;" {%endif%} src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
             </a>
           </figure>
-          <a href="{{product.first_available_variant.url}}">
+          <a href="{{product.first_available_variant.url}}" data-product-link data-title="{{product.title}}">
             <div class="product-meta mt-2">
               <p class="title product-title has-text-centered">{{product.title}}</p>
               <span class="product-price has-text-weight-light has-text-centered">{{ product.price | money_without_trailing_zeros }}</span>

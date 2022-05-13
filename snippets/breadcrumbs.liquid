@@ -6,6 +6,7 @@
 </nav>
 
 <script>
+    window.COLLECTION_HANDLE = '{{collection.handle}}';
     window.CURRENT_PAGE = '{{request.page_type}}';
     // A $( document ).ready() block.
 $( document ).ready(function() {
@@ -39,6 +40,11 @@ $( document ).ready(function() {
     $breadcrumbs.find('ul').append(`<li><a href="/collections?title=${CHILDLINK}" class="is-uppercase">${breadTitle(CHILDLINK)}</a></li>`);
     categories = breadTitle(CHILDLINK);
     }
+    if(GRANDCHILDLINK) {
+    $breadcrumbs.find('ul').append(`<li><a href="/collections?title=${GRANDCHILDLINK}" class="is-uppercase">${breadTitle(GRANDCHILDLINK)}</a></li>`);
+    categories = breadTitle(GRANDCHILDLINK);
+    }
+
     $breadcrumbs.find('ul').append(`<li class="is-active"><a href="/collections/${TITLE}" class="is-uppercase">${TITLE}</a></li>`);
     if(breadTitle(categories) === TITLE) categories = "";
     $breadcrumbs.css('opacity', '1');
@@ -55,7 +61,14 @@ $( document ).ready(function() {
     return JSON.parse(this.getItem(key));
     }
     if(window.CURRENT_PAGE != 'product') {
-        
+        console.log(window.COLLECTION_HANDLE);
+
+        $link = $('a[data-product-link]');
+
+        $link.on('click', function(event) {
+            event.preventDefault();
+            console.log($link.data('title'));
+        });
     }
 });
 </script>
