@@ -1,4 +1,4 @@
-<nav class="breadcrumb is-small {%if request.page_type == 'product'%} pt-4 {%endif%}" aria-label="breadcrumbs">
+<nav class="breadcrumb is-small {%if request.page_type == 'product'%} product-page pt-4 {%endif%}" aria-label="breadcrumbs">
     <ul class="ml-0">
         <li><a href="{{routes.root_url}}" class="is-uppercase">Home</a></li>
         <li><a href="/collections" class="is-uppercase">Categories</a></li>
@@ -27,7 +27,7 @@ $( document ).ready(function() {
     const MAIN = $.urlParam('main'),
     CHILDLINK = $.urlParam('childlink'),
     GRANDCHILDLINK = $.urlParam('grandchildlink'),
-    TITLE = $.urlParam('title') || "{{collection.title}}";
+    TITLE = $.urlParam('title') || "{{collection.title}}" || "{{product.title}}";
     
     let categories = "";
     

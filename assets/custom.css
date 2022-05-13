@@ -2220,7 +2220,7 @@ fieldset[disabled] .file-name {
         -ms-flex-pack: center;
             justify-content: center;
   }
-  nav.breadcrumb.is-small {
+  nav.breadcrumb.is-small.product-page {
     font-size: 10px;
     padding-bottom: 10px;
   }
