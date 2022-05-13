@@ -1,5 +1,5 @@
 <!-- /templates/collection.liquid -->
-<style>
+{%-style-%}
   .collection-page .hero {
     {%if collection.image != blank %}
     background-image: url('{{collection.image | img_url: "master"}}');
@@ -10,11 +10,9 @@
     background-position: top center;
     background-repeat: no-repeat;
   }
-</style>
+{%-endstyle-%}
 <section class="hero is-medium is-link">
-  <div class="hero-body has-text-centered">
-    
-  </div>
+  <div class="hero-body has-text-centered"></div>
 </section>
 <section class="section collection-grid">
   <div class="wrapper">

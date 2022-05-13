@@ -1,6 +1,7 @@
 <!-- /templates/product.liquid -->
 {%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
-
+<div class="wrapper">
+{%render 'breadcrumbs' %}
 <div itemscope itemtype="http://schema.org/Product" id="ProductSection--{{ section.id }}"
   data-section-id="{{ section.id }}"
   data-section-type="product-template"
@@ -252,6 +253,7 @@
         </div>
       </div>
     </div>
+</div>
 </div>
 {% unless product == empty %}
   <script type="application/json" id="ProductJson-{{ section.id }}">

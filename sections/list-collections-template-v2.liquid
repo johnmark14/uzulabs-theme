@@ -20,11 +20,7 @@
 </section>
 <section class="section collection-grid">
   <div class="wrapper">
-    <nav class="breadcrumb is-small" aria-label="breadcrumbs">
-      <ul class="ml-0">
-        <li><a href="{{routes.root_url}}" class="is-uppercase">Home</a></li>
-      </ul>
-    </nav>
+    {%render 'breadcrumbs' %}
     <div class="columns is-variable is-8-widescreen is-desktop">
       <div class="column is-one-fifth-desktop is-hidden-touch">
         <h2 class="title is-uppercase is-size-5 pb-3">{{section.settings.text}}</h2>
@@ -56,61 +52,7 @@
     </div>
   </div>
 </section>
-<script>
-  // A $( document ).ready() block.
-$( document ).ready(function() {
-  // Breadcrumb Links
-  // Main>Childlink>Grandchildlink
-  $.urlParam = function(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results==null) {
-       return null;
-    }
-    return decodeURI(results[1]) || 0;
-  }
 
-  let breadTitle = function(str) {
-    return str.replaceAll('_', ' ');
-  }
-
-  const TITLE = $.urlParam('title') || "Categories";
-  
-  $breadcrumbs = $('.breadcrumb');
-  if(TITLE) {
-    $breadcrumbs.find('ul').append(`<li><a href="/collections" class="is-uppercase">Categories</a></li>`);
-    $breadcrumbs.find('ul').append(`<li class="is-active"><a class="is-uppercase">${breadTitle(TITLE)}</a></li>`);
-  }else {
-    $breadcrumbs.find('ul').append(`<li class="is-active"><a class="is-uppercase">Categories</a></li>`);
-  }
-  $breadcrumbs.css('opacity', '1');
-  // $('h2.collection_title').text(`${(TITLE != "") ? TITLE : "Categories"}`);
-  $('.collections-wrapper').each(function() {
-    $this = $(this);
-    var dataAttribute = $this.data("attr") || ["blank"];
-    let remove = false;
-    console.log('###########');
-    $.each(dataAttribute, (index, value) => {
-      console.log(value);
-      if(value.toLowerCase() != TITLE.toLowerCase() && TITLE != "Categories") {
-        remove = true;
-      } else {
-        remove = false;
-        return false;
-      }
-    });
-    console.log('##############');
-    if(remove) {
-      $this.remove();
-    }
-    $title = $this.find('.title.collection-title');
-
-    if(TITLE != "Categories") {
-      $this.find('.btn').attr('href',`${$this.find('.btn').attr('href')}?main=${TITLE}&title=${$title.text()}`);
-      $title.text(`${(TITLE != $title.text()) ? TITLE+"/"+$title.text() : $title.text()}`);
-    }
-  });
-});
-</script>
 {% schema %}
 {
   "name": "List Collection v2",
