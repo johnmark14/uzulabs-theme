@@ -1,7 +1,7 @@
 <!-- /templates/collection.liquid -->
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-<style>
+{%-style-%}
   .list-collection-page .hero {
     {%if collection.image != blank %}
     background-image: url('{{collection.image | img_url: "master"}}');
@@ -12,15 +12,17 @@
     background-position: top center;
     background-repeat: no-repeat;
   }
-</style>
+{%-endstyle-%}
 <section class="hero is-medium is-link">
-  <div class="hero-body has-text-centered">
-    /* <p>Collection Image</p> */
-  </div>
+  <div class="hero-body has-text-centered"></div>
 </section>
 <section class="section collection-grid">
-  <div class="wrapper">
-    {%render 'breadcrumbs' %}
+    <div class="wrapper">
+      <nav class="breadcrumb is-small {%if request.page_type == 'product'%}pt-5 {%endif%}" aria-label="breadcrumbs">
+        <ul class="ml-0">
+            <li><a href="{{routes.root_url}}" class="is-uppercase">Home</a></li>
+        </ul>
+    </nav>
     <div class="columns is-variable is-8-widescreen is-desktop">
       <div class="column is-one-fifth-desktop is-hidden-touch">
         <h2 class="title is-uppercase is-size-5 pb-3">{{section.settings.text}}</h2>
@@ -52,7 +54,83 @@
     </div>
   </div>
 </section>
+<script>
+  window.CURRENT_PAGE = '{{request.page_type}}';
+  // A $( document ).ready() block.
+$( document ).ready(function() {
+  // Breadcrumb Links
+  // Main>Childlink>Grandchildlink
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null) {
+       return null;
+    }
+    return decodeURI(results[1]) || 0;
+  }
 
+  let breadTitle = function(str) {
+    return str.replaceAll('_', ' ');
+  }
+
+  const TITLE = $.urlParam('title') || "Categories";
+  
+  $breadcrumbs = $('.breadcrumb');
+  if(TITLE != "Categories") {
+    $breadcrumbs.find('ul').append(`<li><a href="/collections" class="is-uppercase">Categories</a></li>`);
+    $breadcrumbs.find('ul').append(`<li class="is-active"><a class="is-uppercase">${breadTitle(TITLE)}</a></li>`);
+  }else {
+    $breadcrumbs.find('ul').append(`<li class="is-active"><a class="is-uppercase">Categories</a></li>`);
+  }
+  $breadcrumbs.css('opacity', '1');
+  // $('h2.collection_title').text(`${(TITLE != "") ? TITLE : "Categories"}`);
+  $('.collections-wrapper').each(function() {
+    $this = $(this);
+    var dataAttribute = $this.data("attr") || ["blank"];
+    let remove = false;
+    console.log('###########');
+    $.each(dataAttribute, (index, value) => {
+      console.log(value);
+      if(value.toLowerCase() != TITLE.toLowerCase() && TITLE != "Categories") {
+        remove = true;
+      } else {
+        remove = false;
+        return false;
+      }
+    });
+    console.log('##############');
+    if(remove) {
+      $this.remove();
+    }
+    $title = $this.find('.title.collection-title');
+
+    if(TITLE != "Categories") {
+      $this.find('.btn').attr('href',`${$this.find('.btn').attr('href')}?main=${TITLE}&title=${$title.text()}`);
+      $title.text(`${(TITLE != $title.text()) ? TITLE+"/"+$title.text() : $title.text()}`);
+    }
+  });
+
+  // Local Storage functions
+  // This save item to local storage
+  Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj));
+  }
+
+  // This get item from local storage
+  Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key));
+  }
+  if(window.CURRENT_PAGE != 'product') {
+      // Breadcrumbs value
+      let crumbs = [];
+      $.each($breadcrumbs.find('li'), function() {
+          $this = $(this);
+          crumbs.push($this.text());
+      });
+      localStorage.setObj('breadcrumbs', crumbs);
+      console.log(window.CURRENT_PAGE);
+  }
+});
+</script>
 {% schema %}
 {
   "name": "List Collection v2",
