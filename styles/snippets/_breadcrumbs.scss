@@ -1,0 +1,11 @@
+nav.breadcrumb {
+    @include mobile {
+        ul {
+            justify-content: center;
+        }
+        &.is-small {
+            font-size: 10px;
+            padding-bottom: 10px;
+        }
+    }
+}

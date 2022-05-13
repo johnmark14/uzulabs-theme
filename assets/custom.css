@@ -2214,6 +2214,18 @@ fieldset[disabled] .file-name {
   margin-bottom: 3rem;
 }
 
+@media screen and (max-width: 768px) {
+  nav.breadcrumb ul {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  nav.breadcrumb.is-small {
+    font-size: 10px;
+    padding-bottom: 10px;
+  }
+}
+
 .breadcrumb {
   opacity: 0;
   font-size: 1rem;
@@ -7360,6 +7372,21 @@ fieldset[disabled] .select select:hover {
 .list-collection-page .column .product-swatches .variant-count {
   padding-top: 2px;
   font-size: 12px;
+}
+
+#shopify-section-product-template .grid.product-single.is-flex {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  #shopify-section-product-template .grid.product-single.is-flex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .footer--body {

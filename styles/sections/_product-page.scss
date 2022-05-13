@@ -1,0 +1,9 @@
+#shopify-section-product-template {
+    .grid.product-single.is-flex {
+        justify-content: center;
+
+        @include mobile {
+            flex-direction: column;
+        }
+    }
+}
