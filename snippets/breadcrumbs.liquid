@@ -37,12 +37,8 @@ $( document ).ready(function() {
     categories = breadTitle(MAIN);
     }
     if(CHILDLINK) {
-    $breadcrumbs.find('ul').append(`<li><a href="/collections?title=${CHILDLINK}" class="is-uppercase">${breadTitle(CHILDLINK)}</a></li>`);
+    $breadcrumbs.find('ul').append(`<li><a href="/collections/${localStorage.getItem('handle')}?main=${MAIN}&title=${CHILDLINK}" class="is-uppercase">${breadTitle(CHILDLINK)}</a></li>`);
     categories = breadTitle(CHILDLINK);
-    }
-    if(GRANDCHILDLINK) {
-    $breadcrumbs.find('ul').append(`<li><a href="/collections?title=${GRANDCHILDLINK}" class="is-uppercase">${breadTitle(GRANDCHILDLINK)}</a></li>`);
-    categories = breadTitle(GRANDCHILDLINK);
     }
 
     $breadcrumbs.find('ul').append(`<li class="is-active"><a href="/collections/${TITLE}" class="is-uppercase">${TITLE}</a></li>`);
@@ -62,12 +58,14 @@ $( document ).ready(function() {
     }
     if(window.CURRENT_PAGE != 'product') {
         console.log(window.COLLECTION_HANDLE);
+        // Save collection handle to local storage
+        localStorage.setItem('handle', window.COLLECTION_HANDLE); 
 
-        $link = $('a[data-product-link]');
-
-        $link.on('click', function(event) {
+        $('.collection-image-drid ').on('click', ('a[data-product-link]'), function(event) {
             event.preventDefault();
-            console.log($link.data('title'));
+            $this = $(this);
+            const buildLink = $this.attr('href') + `&main=${MAIN}&childlink=${TITLE}&title=${$this.data('title')}`;
+            window.location.href = buildLink;
         });
     }
 });
