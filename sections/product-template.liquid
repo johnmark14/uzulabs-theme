@@ -158,6 +158,28 @@
             {%- endcapture %}
 
             {% capture "form_id" %}AddToCartForm--{{ section.id }}{%- endcapture %}
+            {%style%}
+              .product-swatch {
+                height: 24px;
+                width: 24px;
+                margin: 0 auto;
+                margin-bottom: 10px;
+              }
+              
+              .single-option-radio label.color-swatch {
+                letter-spacing: unset;
+                min-width: 100px;
+                text-align: center;
+                border-color: grey;
+                font-size: 10px;
+                border-radius: 5px;
+              }
+
+              fieldset.single-option-radio {
+                padding-left: 0;
+                padding-right: 0;
+              }
+            {%endstyle%}
 
             {% form 'product', product, class:form_classes, id:form_id, data-product-form: '' %}
               {{ form | payment_terms }}
@@ -165,13 +187,14 @@
                 {% for option in product.options_with_values %}
                   <div class="radio-wrapper js product-form__item">
                     <label class="single-option-radio__label"
-                      for="ProductSelect-option-{{ forloop.index0 }}">
+                      for="ProductSelect-option-{{ forloop.index0 }}"> {%if option.name == 'Color'%} Choose your {%endif%}
                       {{ option.name | escape }}
                     </label>
                     {% if section.settings.product_selector == 'radio' %}
                       <fieldset class="single-option-radio"
                         id="ProductSelect-option-{{ forloop.index0 }}">
                         {% assign option_index = forloop.index %}
+                        
                         {% for value in option.values %}
                           {% assign variant_label_state = true %}
                           {% if product.options.size == 1 %}
@@ -179,15 +202,32 @@
                               {% assign variant_label_state = false %}
                             {% endunless %}
                           {% endif %}
+                          
                           <input type="radio"
-                            {% if option.selected_value == value %} checked="checked"{% endif %}
-                            {% unless variant_label_state %} disabled="disabled"{% endunless %}
+                          {% if option.selected_value == value %} checked="checked"{% endif %}
+                          {% unless variant_label_state %} disabled="disabled"{% endunless %}
                             value="{{ value | escape }}"
                             data-index="option{{ option_index }}"
                             name="option{{ option.position }}"
                             class="single-option-selector__radio{% unless variant_label_state %} disabled{% endunless %}"
                             id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
-                          <label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}"{% unless variant_label_state %} class="disabled"{% endunless %}>{{ value | escape }}</label>
+                            <label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}" class="{%if option.name == 'Color'%}color-swatch{%endif%} color-option{% unless variant_label_state %}disabled{% endunless %}">
+                              {%if option.name == 'Color'%}
+                                {%for variant in product.variants %}
+                                  {{option.value}}
+                                  {%if variant.title contains value %}
+                                    {%if variant.metafields.image_color.value.value != blank%}
+                                      {%render 'custom-product-swatch' background_image: variant.metafields.image_color.value.value%}
+                                      {%break%}
+                                    {%elsif variant.metafields.color.value.value != blank%}
+                                      {%render 'custom-product-swatch' background_color: variant.metafields.color.value.value%}
+                                      {%break%}
+                                    {%endif%}
+                                  {%endif%}
+                                {%endfor%}
+                              {%endif%}
+                              {{ value | escape }}
+                            </label>
                         {% endfor %}
                       </fieldset>
                     {% else %}
