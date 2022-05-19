@@ -18,7 +18,7 @@
   <span id="ProductPrice"
     class="product-single__price{% if variant.compare_at_price > variant.price %} on-sale{% endif %}"
     itemprop="price"
-    content="{{ variant.price | divided_by: 100.00 }}">
+    content="{{ variant.price | divided_by: 100.00 }}"> Starts at
     {{ variant.price | money }}
   </span>
 
