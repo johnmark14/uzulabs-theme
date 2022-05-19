@@ -21,7 +21,7 @@
     {%- assign first_media = true -%}
 
     <div class="grid product-single is-flex">
-      <div class="grid__item large--five-twelfths medium--five-twelfths text-center pl-0">
+      <div class="grid__item large--five-twelfths medium--five-twelfths large--five-twelfths text-center pl-0">
         <div id="ProductMediaGroup-{{ section.id }}" class="product-single__media-group-wrapper" data-product-single-media-group-wrapper>
           <div class="product-single__media-group{% unless stacked %} product-single__media-group--single-xr{% endunless %}" data-product-single-media-group>
             {%- assign enable_image_zoom = section.settings.enable_image_zoom -%}
@@ -191,6 +191,16 @@
                 width: 100%
               }
 
+              .single-option-radio label .this-description {
+                text-transform: none;
+                display: inline-block;
+                letter-spacing: 0;
+                font-size: 10px;
+                font-weight: 400;
+                padding-right: 10px;
+                padding-top: 5px;
+              }
+
               fieldset.single-option-radio {
                 padding-left: 0;
                 padding-right: 0;
@@ -264,6 +274,38 @@
                   </div>
                 {% endfor %}
               {% endunless %}
+              <!-- Personalization yes | no-->
+              <div class="radio-wrapper js product-form__item">
+                <label class="single-option-radio__label" for="ProductSelect-option-personalization">Do you want to personalize your item?</label>
+                <fieldset class="single-option-radio" id="ProductSelect-option-personalization">
+                  <!-- YES -->
+                  <input type="radio" checked="checked"
+                    value="With Personalization"
+                    name="personalization-option"
+                    class="single-option-selector__radio-personalization"
+                    id="ProductSelect-option-with-personalization">
+                  <label for="ProductSelect-option-with-personalization" class="lid-type is-flex">
+                    <div class="label-left is-flex-grow-1 has-text-left">
+                      Yes, Engrave my item!
+                      <span class="this-description">
+                        Engrave your item with your own choice of text, numbers, an icon* or even a custom logo*! *Additional fees apply.
+                      </span>
+                    </div>
+                    <span class="is-flex is-align-items-center">FREE</span>
+                  </label>
+                  <!-- NO -->
+                  <input type="radio"
+                    value="Without Personalization"
+                    name="personalization-option"
+                    class="single-option-selector__radio-personalization"
+                    id="ProductSelect-option-without-personalization">
+                  <label for="ProductSelect-option-without-personalization" class="lid-type">
+                    <div class="label-left is-flex-grow-1 has-text-left py-2">
+                      Skip Engraving.
+                    </div>
+                  </label>
+                </fieldset>
+              </div>
 
               <select name="id" id="ProductSelect--{{ section.id }}" class="product-single__variants no-js">
                 {% for variant in product.variants %}
