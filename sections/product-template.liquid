@@ -179,6 +179,18 @@
                 margin-left: 0px;
               }
 
+              .single-option-radio label {
+                border-color: grey;
+                border-radius: 5px;
+              }
+
+              .single-option-radio label.lid-type {
+                text-align: center;
+                padding-top: 22px;
+                padding-bottom: 22px;
+                width: 100%
+              }
+
               fieldset.single-option-radio {
                 padding-left: 0;
                 padding-right: 0;
@@ -190,12 +202,17 @@
               {% unless product.has_only_default_variant %}
                 {% for option in product.options_with_values %}
                   <div class="radio-wrapper js product-form__item">
-                    <label class="single-option-radio__label"
-                      for="ProductSelect-option-{{ forloop.index0 }}"> {%if option.name == 'Color'%} Choose your {%endif%}
-                      {{ option.name | escape }}{%if option.name == 'Color'%}.{%endif%}
-                    </label>
+                    {%if option.name == 'Color'%}
+                      <label class="single-option-radio__label"
+                        for="ProductSelect-option-{{ forloop.index0 }}">Choose your {{ option.name | escape }}.
+                      </label>
+                    {%elsif option.name == 'Material'%}
+                      <label class="single-option-radio__label"
+                        for="ProductSelect-option-{{ forloop.index0 }}">Choose your lid.
+                      </label>
+                    {%endif%}
                     {% if section.settings.product_selector == 'radio' %}
-                      <fieldset class="single-option-radio"
+                      <fieldset class="single-option-radio {%if option.name == 'Material'%} is-flex {%endif%}"
                         id="ProductSelect-option-{{ forloop.index0 }}">
                         {% assign option_index = forloop.index %}
                         
@@ -215,7 +232,7 @@
                             name="option{{ option.position }}"
                             class="single-option-selector__radio{% unless variant_label_state %} disabled{% endunless %}"
                             id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
-                            <label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}" class="{%if option.name == 'Color'%}color-swatch{%endif%} color-option{% unless variant_label_state %}disabled{% endunless %}">
+                            <label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}" class="{%if option.name == 'Color'%}color-swatch{%endif%} {%if option.name == 'Material'%}lid-type {%endif%}color-option{% unless variant_label_state %}disabled{% endunless %}">
                               {%if option.name == 'Color'%}
                                 {%for variant in product.variants %}
                                   {{option.value}}
