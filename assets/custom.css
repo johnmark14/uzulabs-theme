@@ -2214,6 +2214,10 @@ fieldset[disabled] .file-name {
   margin-bottom: 3rem;
 }
 
+nav.breadcrumb ul {
+  font-size: 12px;
+}
+
 @media screen and (max-width: 768px) {
   nav.breadcrumb ul {
     -webkit-box-pack: center;

@@ -1,4 +1,7 @@
 nav.breadcrumb {
+    ul {
+        font-size: 12px;
+    }
     @include mobile {
         ul {
             justify-content: center;
