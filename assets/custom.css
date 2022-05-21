@@ -7384,18 +7384,12 @@ fieldset[disabled] .select select:hover {
           justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 424px) {
   #shopify-section-product-template .grid.product-single.is-flex {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 424px) {
-  #shopify-section-product-template .grid.product-single.is-flex {
-    background: green;
   }
 }
 

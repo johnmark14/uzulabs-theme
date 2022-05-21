@@ -2,11 +2,8 @@
     .grid.product-single.is-flex {
         justify-content: center;
 
-        @include mobile {
-            flex-direction: column;
-        }
         @include until(425px) {
-            background: green;
+            flex-direction: column;
         }
     }
 }
