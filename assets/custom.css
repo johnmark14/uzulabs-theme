@@ -7393,6 +7393,12 @@ fieldset[disabled] .select select:hover {
   }
 }
 
+@media screen and (max-width: 424px) {
+  #shopify-section-product-template .grid.product-single.is-flex {
+    background: green;
+  }
+}
+
 .footer--body {
   min-height: 230px;
 }

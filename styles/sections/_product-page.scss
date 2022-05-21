@@ -5,5 +5,8 @@
         @include mobile {
             flex-direction: column;
         }
+        @include until(425px) {
+            background: green;
+        }
     }
 }
