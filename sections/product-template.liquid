@@ -32,7 +32,7 @@
     {%endstyle%}
 
     <div class="grid product-single is-flex">
-      <div class="grid__item medium--one-half large--five-twelfths text-center pl-0">
+      <div class="grid__item medium--nine-tenths  large--four-tenths text-center pl-0">
         <div id="ProductMediaGroup-{{ section.id }}" class="product-single__media-group-wrapper" data-product-single-media-group-wrapper>
           <div class="product-single__media-group{% unless stacked %} product-single__media-group--single-xr{% endunless %}" data-product-single-media-group>
             {%- assign enable_image_zoom = section.settings.enable_image_zoom -%}
@@ -133,7 +133,7 @@
           </div>
         </div>
       </div>
-      <div class="grid__item product-single__meta--wrapper medium--two-fifths large--four-tenths xlarge--three-tenths">
+      <div class="grid__item product-single__meta--wrapper medium--nine-tenths  large--four-tenths xlarge--three-tenths">
         <div class="product-single__meta">
           {% if section.settings.product_vendor_enable %}
             <h2 class="product-single__vendor" itemprop="brand">{{ product.vendor }}</h2>
@@ -173,8 +173,8 @@
                 padding: 0px;
               }
               .product-swatch {
-                height: 24px;
-                width: 24px;
+                height: 26px;
+                width: 26px;
                 margin: 0 auto;
                 margin-bottom: 10px;
               }
@@ -182,7 +182,8 @@
               .single-option-radio label.color-swatch {
                 letter-spacing: unset;
                 min-width: 100px;
-                max-width: 100px;
+                max-width: 120px;
+                height: 100%;
                 text-align: center;
                 border-color: grey;
                 font-size: 10px;
@@ -190,14 +191,10 @@
                 margin-left: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
-              }
-
-              @media screen and (max-width: 820px) {
-                .single-option-radio label.color-swatch {
-                  font-size: 8px;
-                  min-width: 90px;
-                  width: 90px
-                }
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
               }
 
               .single-option-radio label {
@@ -229,6 +226,18 @@
               .radio-wrapper {
                 border-bottom: 1px solid #D8D8D8;
               }
+
+              .multiline-card {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 10px;
+              }
+
+              @media screen and (max-width: 768px) {
+                .multiline-card {
+                  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                }
+              }
             {%endstyle%}
 
             {% form 'product', product, class:form_classes, id:form_id, data-product-form: '' %}
@@ -246,7 +255,7 @@
                       </label>
                     {%endif%}
                     {% if section.settings.product_selector == 'radio' %}
-                      <fieldset class="single-option-radio {%if option.name == 'Material'%} is-flex {%endif%}"
+                      <fieldset class="single-option-radio {%if option.name == 'Material'%} is-flex {%endif%} {%if option.name == 'Color'%} multiline-card {%endif%}"
                         id="ProductSelect-option-{{ forloop.index0 }}">
                         {% assign option_index = forloop.index %}
                         
@@ -266,7 +275,7 @@
                             name="option{{ option.position }}"
                             class="single-option-selector__radio{% unless variant_label_state %} disabled{% endunless %}"
                             id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
-                            <label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}" class="{%if option.name == 'Color'%}color-swatch{%endif%} {%if option.name == 'Material'%}lid-type {%endif%}color-option{% unless variant_label_state %}disabled{% endunless %}">
+                            <label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}" class="{%if option.name == 'Color'%}color-swatch{%endif%} {%if option.name == 'Material'%} lid-type{%endif%} color-option{% unless variant_label_state %} disabled{% endunless %}">
                               {%if option.name == 'Color'%}
                                 {%for variant in product.variants %}
                                   {%if variant.title contains value %}
@@ -280,7 +289,11 @@
                                   {%endif%}
                                 {%endfor%}
                               {%endif%}
-                              {{ value | escape }}
+                              {%if option.name == 'Color'%}
+                                <span>{{ value | escape }}</span>
+                              {%else%}
+                                {{ value | escape }}
+                              {%endif%}
                             </label>
                         {% endfor %}
                       </fieldset>

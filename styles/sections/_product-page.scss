@@ -2,8 +2,10 @@
     .grid.product-single.is-flex {
         justify-content: center;
 
-        @include until(425px) {
+        @include mobile {
             flex-direction: column;
+            align-items: center;
+            padding-left: 10px;
         }
     }
 }
