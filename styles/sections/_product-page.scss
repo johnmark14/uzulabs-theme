@@ -8,4 +8,14 @@
             padding-left: 10px;
         }
     }
+    @include mobile {
+        fieldset#ProductSelect-option-personalization {
+            display: flex;
+        }
+    }
+    @include until(425px) {
+        fieldset#ProductSelect-option-personalization {
+            flex-direction: column;
+        }
+    }
 }
