@@ -1,67 +1,52 @@
 <!-- Menus for Text -->
+{%style%}
+    .engraving-personalization > fieldset {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .engraving-personalization fieldset > label {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .engraving-personalization .ProductSelect-option > span{
+        display: block;
+        text-align: center;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+{%endstyle%}
 {%if engrave_text != blank %}
-    <div class="radio-wrapper js product-form__item">
-        <label class="single-option-radio__label" for="ProductSelect-option-personalization">Do you want to personalize your item?</label>
+    <div class="radio-wrapper js product-form__item engraving-personalization">
+        <label class="single-option-radio__label" for="ProductSelect-option-personalization">Choose your design style.</label>
         <fieldset class="single-option-radio" id="ProductSelect-option-personalization">
-            <!-- YES -->
+            <!-- Option Columns -->
             <input type="radio" checked="checked"
-            value="With Personalization"
-            name="personalization-option"
+            value="text1"
+            name="personalization-texts"
             class="single-option-selector__radio-personalization"
-            id="ProductSelect-option-with-personalization">
-            <label for="ProductSelect-option-with-personalization" class="lid-type is-flex">
-            <div class="label-left is-flex-grow-1 has-text-left">
-                Yes, Engrave my item!
-                <span class="this-description">
-                Engrave your item with your own choice of text, numbers, an icon* or even a custom logo*! *Additional fees apply.
-                </span>
-            </div>
-            <span class="is-flex is-align-items-center">FREE</span>
+            id="ProductSelect-option-text1">
+            <label for="ProductSelect-option-text1">
+                <div class="ProductSelect-option">
+                    <span>Horizontal Text</span>
+                    <span class="this-description">
+                        Up to 5 lines of text
+                    </span>
+                </div>
             </label>
             <!-- NO -->
             <input type="radio"
-            value="Without Personalization"
-            name="personalization-option"
+            value="text1"
+            name="personalization-texts"
             class="single-option-selector__radio-personalization"
-            id="ProductSelect-option-without-personalization">
-            <label for="ProductSelect-option-without-personalization" class="lid-type">
-            <div class="label-left is-flex-grow-1 has-text-left py-2">
-                Skip Engraving.
-            </div>
-            </label>
-        </fieldset>
-    </div>
-{%endif%}
-<!-- Menus for icons -->
-{% if engrave_icons != blank %}
-    <div class="radio-wrapper js product-form__item">
-        <label class="single-option-radio__label" for="ProductSelect-option-personalization">Do you want to personalize your item?</label>
-        <fieldset class="single-option-radio" id="ProductSelect-option-personalization">
-            <!-- YES -->
-            <input type="radio" checked="checked"
-            value="With Personalization"
-            name="personalization-option"
-            class="single-option-selector__radio-personalization"
-            id="ProductSelect-option-with-personalization">
-            <label for="ProductSelect-option-with-personalization" class="lid-type is-flex">
-            <div class="label-left is-flex-grow-1 has-text-left">
-                Yes, Engrave my item!
-                <span class="this-description">
-                Engrave your item with your own choice of text, numbers, an icon* or even a custom logo*! *Additional fees apply.
-                </span>
-            </div>
-            <span class="is-flex is-align-items-center">FREE</span>
-            </label>
-            <!-- NO -->
-            <input type="radio"
-            value="Without Personalization"
-            name="personalization-option"
-            class="single-option-selector__radio-personalization"
-            id="ProductSelect-option-without-personalization">
-            <label for="ProductSelect-option-without-personalization" class="lid-type">
-            <div class="label-left is-flex-grow-1 has-text-left py-2">
-                Skip Engraving.
-            </div>
+            id="ProductSelect-option-text2">
+            <label for="ProductSelect-option-text2">
+                <div class="ProductSelect-option">
+                    <span>Vertical Text</span>
+                    <span class="this-description">
+                        Up to 3 lines of text
+                    </span>
+                </div>
             </label>
         </fieldset>
     </div>
