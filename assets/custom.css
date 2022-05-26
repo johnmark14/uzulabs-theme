@@ -7405,7 +7405,7 @@ fieldset[disabled] .select select:hover {
   }
 }
 
-@media screen and (max-width: 424px) {
+@media screen and (max-width: 425px) {
   #shopify-section-product-template fieldset#ProductSelect-option-personalization {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

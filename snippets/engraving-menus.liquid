@@ -1,7 +1,7 @@
 <!-- Menus for Text -->
 {%style%}
-    .engraving-personalization > fieldset {
-        display: grid;
+    .engraving-personalization > fieldset.engraving-options {
+        display: grid !important;
         grid-template-columns: repeat(2, 1fr);
     }
     .engraving-personalization > fieldset label.span-two-col {
@@ -22,7 +22,7 @@
 {%if engrave_text != blank %}
     <div class="radio-wrapper js product-form__item engraving-personalization">
         <label class="single-option-radio__label" for="ProductSelect-option-personalization">Choose your design style.</label>
-        <fieldset class="single-option-radio" id="ProductSelect-option-personalization">
+        <fieldset class="single-option-radio engraving-options" id="ProductSelect-option-personalization">
             <!-- Option Horizontal -->
             <input type="radio" checked="checked"
             value="text1"
