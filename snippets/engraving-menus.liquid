@@ -4,6 +4,9 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
+    .engraving-personalization > fieldset label.span-two-col {
+        grid-column: 1/ span 2;
+    }
     .engraving-personalization fieldset > label {
         padding-top: 20px;
         padding-bottom: 20px;
@@ -20,7 +23,7 @@
     <div class="radio-wrapper js product-form__item engraving-personalization">
         <label class="single-option-radio__label" for="ProductSelect-option-personalization">Choose your design style.</label>
         <fieldset class="single-option-radio" id="ProductSelect-option-personalization">
-            <!-- Option Columns -->
+            <!-- Option Horizontal -->
             <input type="radio" checked="checked"
             value="text1"
             name="personalization-texts"
@@ -34,7 +37,7 @@
                     </span>
                 </div>
             </label>
-            <!-- NO -->
+            <!-- Option vertical -->
             <input type="radio"
             value="text1"
             name="personalization-texts"
@@ -45,6 +48,48 @@
                     <span>Vertical Text</span>
                     <span class="this-description">
                         Up to 3 lines of text
+                    </span>
+                </div>
+            </label>
+            <!-- Option Initials -->
+            <input type="radio"
+            value="text1"
+            name="personalization-texts"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-initials">
+            <label for="ProductSelect-option-initials">
+                <div class="ProductSelect-option">
+                    <span>Initials</span>
+                    <span class="this-description">
+                        Up to 3 Letters
+                    </span>
+                </div>
+            </label>
+            <!-- Option Icon/Emoji -->
+            <input type="radio"
+            value="text1"
+            name="personalization-texts"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-icon">
+            <label for="ProductSelect-option-icon">
+                <div class="ProductSelect-option">
+                    <span>Icon/Emoji</span>
+                    <span class="this-description">
+                        Includes one line of texts.
+                    </span>
+                </div>
+            </label>
+            <!-- Option Custom Logo -->
+            <input type="radio"
+            value="text1"
+            name="personalization-texts"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-custom">
+            <label for="ProductSelect-option-custom" class="span-two-col">
+                <div class="ProductSelect-option">
+                    <span>Custom Logo? Contact Us.*</span>
+                    <span class="this-description">
+                        Start at +$15
                     </span>
                 </div>
             </label>
