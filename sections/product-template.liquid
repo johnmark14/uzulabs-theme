@@ -341,6 +341,7 @@
                 </fieldset>
               </div>
               {%render 'engraving-menus' engrave_text: product.metafields.engrave.text.value, engrave_icons: product.metafields.engrave.icons.value %}
+              {%render 'engraving-icons' engrave_icons: product.metafields.engrave.icons.value%}
               {%endif%}
 
               <select name="id" id="ProductSelect--{{ section.id }}" class="product-single__variants no-js">
