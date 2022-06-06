@@ -1,0 +1,186 @@
+<!-- Menus for Text -->
+{%style%}
+    .engraving-personalization > fieldset.engraving-icons-texts {
+        padding: 0;
+    }
+    .engraving-personalization > fieldset.engraving-icons-texts:last-child {
+        padding-bottom: 20px;
+    }
+    .engraving-personalization > fieldset.engraving-icons-texts.icons {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .engraving-personalization > fieldset.engraving-icons-texts.texts{
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .engraving-personalization > fieldset label.span-two-col {
+        grid-column: 1/ span 2;
+    }
+    .engraving-personalization fieldset.engraving-icons-texts > label {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+    }
+    .engraving-personalization fieldset.engraving-icons-texts.texts > label {
+        padding: 20px 10px;
+    }
+
+    .engraving-personalization .ProductSelect-option svg {
+        height: 42px;
+    }
+    
+    .engraving-personalization .ProductSelect-option path {
+        fill: rgba(0,0,0,0.5);
+    }
+
+    .single-option-radio input[type=radio]:checked+label .ProductSelect-option path {
+        fill: rgba(0,0,0,1);
+    }
+{%endstyle%}
+    <div class="radio-wrapper js product-form__item engraving-personalization">
+        <label class="single-option-radio__label" 
+        for="ProductSelect-option-personalization">Choose an icon and font.</label>
+        <fieldset class="single-option-radio engraving-icons-texts icons" id="ProductSelect-option-personalization-icons">
+            <!-- Options -->
+            <input type="radio" checked="checked"
+            value="icon1"
+            name="personalization-icons"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-icon-1">
+            <label for="ProductSelect-option-icon-1">
+                <div class="ProductSelect-option">
+                    {%render 'product-icon-type-1'%}
+                </div>
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="icon2"
+            name="personalization-icons"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-icon-2">
+            <label for="ProductSelect-option-icon-2">
+                <div class="ProductSelect-option">
+                    {%render 'product-icon-type-2'%}
+                </div>
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="icon3"
+            name="personalization-icons"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-icon-3">
+            <label for="ProductSelect-option-icon-3">
+                <div class="ProductSelect-option">
+                    {%render 'product-icon-type-3'%}
+                </div>
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="icon4"
+            name="personalization-icons"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-icon-4">
+            <label for="ProductSelect-option-icon-4">
+                <div class="ProductSelect-option">
+                    {%render 'product-icon-type-4'%}
+                </div>
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="icon5"
+            name="personalization-icons"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-icon-5">
+            <label for="ProductSelect-option-icon-5">
+                <div class="ProductSelect-option">
+                    {%render 'product-icon-type-5'%}
+                </div>
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="icon6"
+            name="personalization-icons"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-icon-6">
+            <label for="ProductSelect-option-icon-6">
+                <div class="ProductSelect-option">
+                    {%render 'product-icon-type-6'%}
+                </div>
+            </label>
+        </fieldset>
+        <fieldset class="single-option-radio engraving-icons-texts texts" id="ProductSelect-option-personalization-texts">
+            <!-- Options -->
+            <input type="radio" checked="checked"
+            value="text1"
+            name="personalization-texts"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-text-1">
+            <label for="ProductSelect-option-text-1">
+                Thermi Style Font
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="text2"
+            name="personalization-texts"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-text-2">
+            <label for="ProductSelect-option-text-2">
+                Dancing Font
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="text3"
+            name="personalization-texts"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-text-3">
+            <label for="ProductSelect-option-text-3">
+                Caveat Font
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="text4"
+            name="personalization-texts"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-text-4">
+            <label for="ProductSelect-option-text-4">
+                Acme Font
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="text4"
+            name="personalization-texts"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-text-5">
+            <label for="ProductSelect-option-text-5">
+                Satisfy Font
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="text4"
+            name="personalization-texts"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-text-6">
+            <label for="ProductSelect-option-text-6">
+                Cookie Font
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="text4"
+            name="personalization-texts"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-text-7">
+            <label for="ProductSelect-option-text-7">
+                Secular One Font
+            </label>
+            <!-- Options -->
+            <input type="radio"
+            value="text4"
+            name="personalization-texts"
+            class="single-option-selector__radio-personalization"
+            id="ProductSelect-option-text-8">
+            <label for="ProductSelect-option-text-8">
+                Montserrat Font
+            </label>
+        </fieldset>
+    </div>
