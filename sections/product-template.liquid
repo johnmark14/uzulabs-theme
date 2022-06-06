@@ -315,6 +315,8 @@
                   <fieldset class="single-option-radio" id="ProductSelect-option-personalization">
                     <!-- YES -->
                     <input type="radio" checked="checked"
+                      data-engraving-include
+                      data-value="true"
                       value="With Personalization"
                       name="personalization-option"
                       class="single-option-selector__radio-personalization"
@@ -330,6 +332,8 @@
                     </label>
                     <!-- NO -->
                     <input type="radio"
+                    data-engraving-include
+                    data-value="false"
                       value="Without Personalization"
                       name="personalization-option"
                       class="single-option-selector__radio-personalization"
@@ -341,10 +345,12 @@
                     </label>
                   </fieldset>
                 </div>
-                {%render 'engraving-menus'%}
-                {%render 'engraving-icons-texts'%}
-                <!-- Texts Inputs -->
-                {%render 'engraving-text-inputs'%}
+                <div class="engraving-wrapper">
+                  {%render 'engraving-menus'%}
+                  {%render 'engraving-icons-texts'%}
+                  <!-- Texts Inputs -->
+                  {%render 'engraving-text-inputs'%}
+                </div>
               {%endif%}
 
               <select name="id" id="ProductSelect--{{ section.id }}" class="product-single__variants no-js">
@@ -410,6 +416,37 @@
   </script>
 {% endunless %}
 
+<script>
+  // Functions
+  const showEmojiSection = function() {
+    $('.engraving-icons-texts.icons').removeClass('is-hidden');
+  }
+  const hideEmojiSection = function() {
+    $('.engraving-icons-texts.icons').addClass('is-hidden');
+  }
+  // Events
+  // 1) Add or Not Engraving Option
+  $('.single-option-radio').on('change', 'input[data-engraving-include]', function() {
+    $this = $(this);
+    if(!$this.data('value')) {
+      $('.engraving-wrapper').addClass('is-hidden');
+      return false;
+    }
+
+    $('.engraving-wrapper').removeClass('is-hidden');
+  });
+
+  // 2) Engraving Option
+  $('.engraving-options').on('change', 'input[data-engraving-options]', function() {
+    $this = $(this);
+    // Show Icon/Emoji Options
+    if($this.val() == 'emoji') {
+      showEmojiSection();
+    } else {
+      hideEmojiSection();
+    }
+  });
+</script>
 
 
 {% schema %}
