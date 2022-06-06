@@ -1865,6 +1865,12 @@ fieldset[disabled] .file-name {
   padding-bottom: auto !important;
 }
 
+.sticky-child {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 .image-grid figure.image {
   margin: 0;
   background-size: 0 0;
@@ -7232,6 +7238,10 @@ fieldset[disabled] .select select:hover {
 
 .content.is-large {
   font-size: 1.5rem;
+}
+
+#shopify-section-header {
+  z-index: 10;
 }
 
 @media screen and (max-width: 1023px) {

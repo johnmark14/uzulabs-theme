@@ -33,7 +33,7 @@
 
     <div class="grid product-single is-flex">
       <div class="grid__item medium--nine-tenths  large--four-tenths text-center pl-0">
-        <div id="ProductMediaGroup-{{ section.id }}" class="product-single__media-group-wrapper" data-product-single-media-group-wrapper>
+        <div id="ProductMediaGroup-{{ section.id }}" class="product-single__media-group-wrapper sticky-child" data-product-single-media-group-wrapper>
           <div class="product-single__media-group{% unless stacked %} product-single__media-group--single-xr{% endunless %}" data-product-single-media-group>
             {%- assign enable_image_zoom = section.settings.enable_image_zoom -%}
             {% assign height = 850 %}
@@ -424,16 +424,33 @@
   const hideEmojiSection = function() {
     $('.engraving-icons-texts.icons').addClass('is-hidden');
   }
+  const handleInputTexts = function(max, numText) {
+    $(".engraving-text-inputs").children().each(function(index) {
+      $child = $(this);
+
+      if($child.hasClass('is-hidden')) {
+        $child.removeClass('is-hidden');
+      }
+
+      if(index >= numText) {
+        $child.addClass('is-hidden');
+      }
+      $child.find('span>i').text(max);
+    });
+  }
   // Events
   // 1) Add or Not Engraving Option
   $('.single-option-radio').on('change', 'input[data-engraving-include]', function() {
     $this = $(this);
+    $engraving = $('.engraving-wrapper');
+
     if(!$this.data('value')) {
-      $('.engraving-wrapper').addClass('is-hidden');
+      $engraving.addClass('is-hidden');
       return false;
     }
 
-    $('.engraving-wrapper').removeClass('is-hidden');
+    $engraving.removeClass('is-hidden');
+  
   });
 
   // 2) Engraving Option
@@ -445,6 +462,9 @@
     } else {
       hideEmojiSection();
     }
+
+    // HandleInputTexts
+    handleInputTexts($this.data('max-char'), $this.data('value'));
   });
 </script>
 

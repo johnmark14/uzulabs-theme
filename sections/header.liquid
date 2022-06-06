@@ -71,7 +71,7 @@
     }
   }
 {%- endstyle -%}
-<div data-section-id="{{ section.id }}" data-section-type="header-section" data-template="{{ request.page_type }}">
+<div data-section-id="{{ section.id }}" data-section-type="header-section" data-template="{{ request.page_type }}" class="sticky-child">
   <div id="NavDrawer" class="drawer drawer--left">
     {% include 'drawer-menu' %}
   </div>
@@ -398,6 +398,7 @@
     "zh-CN": "标头",
     "zh-TW": "標頭"
   },
+  "class": "sticky-child",
   "settings": [
     {
       "type": "image_picker",
