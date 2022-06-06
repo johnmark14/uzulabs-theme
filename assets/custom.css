@@ -7414,6 +7414,22 @@ fieldset[disabled] .select select:hover {
   }
 }
 
+#shopify-section-product-template .radio-wrapper.product-form__item.engraving-texts fieldset.single-option-radio .text-option__wrapper > input {
+  position: static;
+  width: 100%;
+  height: unset;
+  border: 1px solid #7a7a7a;
+  background-color: unset;
+}
+
+#shopify-section-product-template .radio-wrapper.product-form__item.engraving-texts .text-option__wrapper {
+  margin-bottom: 5px;
+}
+
+#shopify-section-product-template .radio-wrapper.product-form__item.engraving-texts .text-option__wrapper i {
+  font-style: normal;
+}
+
 .footer--body {
   min-height: 230px;
 }

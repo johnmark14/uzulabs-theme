@@ -19,3 +19,21 @@
         }
     }
 }
+#shopify-section-product-template {
+    .radio-wrapper.product-form__item.engraving-texts {
+        fieldset.single-option-radio .text-option__wrapper > input{
+            position: static;
+            width: 100%;
+            height: unset;
+            border: 1px solid $grey;
+            background-color: unset;
+        }
+
+        .text-option__wrapper {
+            margin-bottom: 5px;
+            i {
+                font-style: normal;
+            }
+        }
+    }
+}
