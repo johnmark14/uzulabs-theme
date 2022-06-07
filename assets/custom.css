@@ -2282,7 +2282,10 @@ nav.breadcrumb ul {
 
 .breadcrumb li + li::before {
   color: #b5b5b5;
-  content: "/";
+  content: "\203A";
+  font-size: 26px;
+  padding-bottom: 5px;
+  line-height: 0;
 }
 
 .breadcrumb ul,
