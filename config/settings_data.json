@@ -16,19 +16,20 @@
     "color_drawer_border": "#000000",
     "color_drawer_button": "#000000",
     "color_drawer_button_text": "#ffffff",
-    "type_header_family": "quicksand_n4",
-    "type_header_base_size": "38px",
+    "type_header_family": "quicksand_n5",
+    "type_header_base_size": "28px",
     "type_header_border_thickness": "1px",
-    "type_accent_family": "roboto_n4",
+    "type_accent_family": "roboto_n5",
     "type_accent_transform": true,
     "type_accent_spacing": true,
     "type_accent_subheadings": false,
     "type_base_family": "helvetica_n4",
-    "type_base_size": "17px",
+    "type_base_size": "15px",
     "type_base_italize_titles": false,
     "cart_type": "drawer",
     "cart_notes_enable": true,
     "social_facebook_link": "\/",
+    "social_tiktok": "\/",
     "social_twitter_link": "",
     "social_pinterest_link": "",
     "social_instagram_link": "\/",
@@ -41,7 +42,7 @@
     "share_facebook": true,
     "share_twitter": true,
     "share_pinterest": true,
-    "favicon": "",
+    "favicon": "shopify:\/\/shop_images\/uzulabs_favicon1.png",
     "checkout_header_image": "",
     "checkout_logo_image": "",
     "checkout_logo_position": "left",
@@ -101,11 +102,29 @@
               "slide_button_label_color": "#ffffff",
               "slide_button_background_color": "#1f2021"
             }
+          },
+          "1311b4c9-a94f-4df5-bdf2-dea70918d54c": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/1_copy.jpg",
+              "image_position": "center center",
+              "image_overlay": true,
+              "image_overlay_opacity": 25,
+              "text_alignment": "right",
+              "slide_heading": "CUSTOMIZE & <br>MAKE IT UNIQUE.",
+              "slide_subheading": "",
+              "button_label": "Shop now",
+              "button_link": "shopify:\/\/collections",
+              "slide_text_color": "#ffffff",
+              "slide_button_label_color": "#ffffff",
+              "slide_button_background_color": "#1f2021"
+            }
           }
         },
         "block_order": [
           "1495823280244",
-          "90a8997e-2017-48cd-9056-0f4d1dca3128"
+          "90a8997e-2017-48cd-9056-0f4d1dca3128",
+          "1311b4c9-a94f-4df5-bdf2-dea70918d54c"
         ],
         "settings": {
           "home_hero_height": "adapt",
@@ -137,7 +156,7 @@
           "transparent_header_enable": false,
           "transparent_header_color": "#ffffff",
           "search": "page",
-          "main_menu_link_list": "main-menu",
+          "main_menu_link_list": "new-menu-07-05-22",
           "drawer_bottom_link_list": "",
           "drawer_search_enable": false,
           "show_announcement": true,
@@ -160,31 +179,11 @@
       "collection-template": {
         "type": "collection-template",
         "settings": {
-          "show_collection_image": false,
-          "collection_sort_enable": false,
-          "collection_tags_enable": false,
+          "show_collection_image": true,
+          "collection_sort_enable": true,
+          "collection_tags_enable": true,
           "collection_products_grid": "grid",
           "product_vendor_enable": false
-        }
-      },
-      "1494860348200": {
-        "type": "featured-row",
-        "settings": {
-          "layout": "right",
-          "title": "Image with text",
-          "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-          "button_label": "",
-          "button_link": ""
-        }
-      },
-      "1494894035034": {
-        "type": "featured-row",
-        "settings": {
-          "layout": "left",
-          "title": "Image with text",
-          "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-          "button_label": "",
-          "button_link": ""
         }
       },
       "product-template": {
@@ -194,47 +193,12 @@
           "social_sharing_products": true,
           "quantity_enabled": true,
           "product_selector": "radio",
-          "enable_payment_button": true,
-          "add_to_cart_button_size": "small",
+          "enable_payment_button": false,
+          "add_to_cart_button_size": "large",
           "media_layout": "thumbnails",
           "enable_image_zoom": true,
           "enable_video_looping": true
         }
-      },
-      "1496078102297": {
-        "type": "advanced-content",
-        "blocks": {
-          "1496078102297-0": {
-            "type": "html",
-            "settings": {
-              "code": "<div style=\"text-align:center;\">\n<h1 class=\"h1\">Use HTML to format your text so it can be easily read.<\/h1>This text can be used to share information about your brand with customers.<\/div>",
-              "width": "100%",
-              "alignment": "top-middle"
-            }
-          }
-        },
-        "block_order": [
-          "1496078102297-0"
-        ],
-        "settings": {}
-      },
-      "1496177901425": {
-        "type": "advanced-content",
-        "disabled": true,
-        "blocks": {
-          "ea27c66f-edee-4873-9f11-365c271a7c69": {
-            "type": "html",
-            "settings": {
-              "code": "<div style=\"text-align:center;\">\n<h2>Use HTML to format your text so it can be easily read.<\/h2>This text can be used to share information about your brand with customers.<\/div>",
-              "width": "100%",
-              "alignment": "top-middle"
-            }
-          }
-        },
-        "block_order": [
-          "ea27c66f-edee-4873-9f11-365c271a7c69"
-        ],
-        "settings": {}
       },
       "product-recommendations": {
         "type": "product-recommendations",
@@ -242,16 +206,309 @@
           "show_product_recommendations": true,
           "heading": "You may also like"
         }
+      },
+      "164958441933486d84": {
+        "type": "carousel-showcase",
+        "blocks": {
+          "164958441933486d84-0": {
+            "type": "slide",
+            "settings": {
+              "product": "20oz-stemless-wine-tumbler"
+            }
+          },
+          "164958441933486d84-1": {
+            "type": "slide",
+            "settings": {
+              "product": "12oz-tumbler"
+            }
+          },
+          "164958441933486d84-2": {
+            "type": "slide",
+            "settings": {
+              "product": "thermi-silicone-protective-sleeve-18oz-20-21oz-24oz-32oz-40oz-64oz"
+            }
+          },
+          "164958441933486d84-3": {
+            "type": "slide",
+            "settings": {
+              "product": "20oz-tumbler"
+            }
+          },
+          "164958441933486d84-4": {
+            "type": "slide",
+            "settings": {
+              "product": "17oz-bottle"
+            }
+          }
+        },
+        "block_order": [
+          "164958441933486d84-0",
+          "164958441933486d84-1",
+          "164958441933486d84-2",
+          "164958441933486d84-3",
+          "164958441933486d84-4"
+        ],
+        "settings": {
+          "title": "Best Sellers",
+          "hide_rule": true,
+          "color_background": "#f7f7f7",
+          "color_navigation": "#535353",
+          "hide_navigation": false
+        }
+      },
+      "164959154722327c1d": {
+        "type": "how-to-section",
+        "settings": {
+          "title": "How to order",
+          "hide_rule": true,
+          "color_background": "#ffffff",
+          "image_left": "shopify:\/\/shop_images\/step1.png",
+          "text_left_title": "Choose",
+          "text_left_description": "Choose a product",
+          "image_center": "shopify:\/\/shop_images\/step2.png",
+          "text_center_title": "Customize",
+          "text_center_description": "Personalize it",
+          "image_right": "shopify:\/\/shop_images\/step3.png",
+          "text_right_title": "Order",
+          "text_right_description": "Let us work our magic!"
+        }
+      },
+      "1649599656e928c9c7": {
+        "type": "newsletter",
+        "settings": {
+          "heading": "Subscribe to our newsletter",
+          "subheading": "<p>Promotions, new products and sales. Directly to your inbox.<\/p>",
+          "color_background": "#f7f7f7"
+        }
+      },
+      "1649692789965aa036": {
+        "type": "featured-collection-v2",
+        "blocks": {
+          "8cef0c2d-c305-4d97-bb22-27d457c1c2a1": {
+            "type": "collection",
+            "settings": {
+              "collection": "resin-bottle"
+            }
+          },
+          "3d0b7548-61bc-49a5-8b6b-b8064bddf56f": {
+            "type": "collection",
+            "settings": {
+              "collection": "thermi-silicone-protective-sleeves"
+            }
+          },
+          "1db84b4e-1979-4e04-8098-f333d82359c0": {
+            "type": "collection",
+            "settings": {
+              "collection": "sport-canteen"
+            }
+          },
+          "c5bd3e1a-d387-46c5-954e-31e408c51a76": {
+            "type": "collection",
+            "settings": {
+              "collection": "stainless-steel-tumbler"
+            }
+          }
+        },
+        "block_order": [
+          "8cef0c2d-c305-4d97-bb22-27d457c1c2a1",
+          "3d0b7548-61bc-49a5-8b6b-b8064bddf56f",
+          "1db84b4e-1979-4e04-8098-f333d82359c0",
+          "c5bd3e1a-d387-46c5-954e-31e408c51a76"
+        ],
+        "settings": {
+          "title": "All of our products are uniquely YOU.",
+          "hide_rule": true,
+          "color_background": "#ffffff",
+          "button_label": "View More",
+          "button_link": "shopify:\/\/collections",
+          "color_button_label": "#ffffff",
+          "color_button_background": "#000000"
+        }
+      },
+      "164978037918fdc411": {
+        "type": "gallery",
+        "blocks": {
+          "164978037918fdc411-0": {
+            "type": "gallery",
+            "settings": {
+              "image_1": "shopify:\/\/shop_images\/image4_5367c00a-baa4-4856-8f83-55dac5a5c4aa.jpg",
+              "image_url_1": "",
+              "image_2": "shopify:\/\/shop_images\/image3_d75f5c93-2736-4790-9052-d8fc64b28b3f.jpg",
+              "image_url_2": "",
+              "image_3": "shopify:\/\/shop_images\/image2_f951fa35-8060-4b2f-bc14-25eb4d06bab7.jpg",
+              "image_url_3": ""
+            }
+          },
+          "4810a192-2d7d-46aa-a128-b5b8d4e52c66": {
+            "type": "gallery",
+            "settings": {
+              "image_1": "shopify:\/\/shop_images\/1_copy_da716b66-6844-4712-ad70-9cbbb8aee02f.jpg",
+              "image_url_1": "",
+              "image_2": "shopify:\/\/shop_images\/image1_dec97033-6203-450e-b5f0-68cdcfc2003c.jpg",
+              "image_url_2": "",
+              "image_3": "shopify:\/\/shop_images\/3_copy_2c527639-58d3-492d-adb0-a7eedeb12116.jpg",
+              "image_url_3": ""
+            }
+          }
+        },
+        "block_order": [
+          "164978037918fdc411-0",
+          "4810a192-2d7d-46aa-a128-b5b8d4e52c66"
+        ],
+        "settings": {
+          "title": "",
+          "hide_rule": true,
+          "color_background": "#f7f7f7",
+          "button_label": "",
+          "button_link": "",
+          "color_button_label": "#ffffff",
+          "color_button_background": "#000000"
+        }
+      },
+      "1650189085af907bf8": {
+        "type": "our-clients",
+        "blocks": {
+          "1650189085af907bf8-0": {
+            "type": "clients",
+            "settings": {
+              "client_image": "shopify:\/\/shop_images\/casinoshunter_2x_8ebca5c1-e3e5-46e9-8898-0bf9c8979551.png",
+              "client_description": "Our Client Logo"
+            }
+          },
+          "1650189085af907bf8-1": {
+            "type": "clients",
+            "settings": {
+              "client_image": "shopify:\/\/shop_images\/inkoop_2x_398503dc-6945-40f1-a0f1-c5fff740f8d4.png",
+              "client_description": "Our Client Logo"
+            }
+          },
+          "1650189085af907bf8-2": {
+            "type": "clients",
+            "settings": {
+              "client_image": "shopify:\/\/shop_images\/casinotopitaly_2x_7268d8f2-f748-40cb-91c8-1fe97555543b.png",
+              "client_description": "Our Client Logo"
+            }
+          },
+          "1650189085af907bf8-3": {
+            "type": "clients",
+            "settings": {
+              "client_image": "shopify:\/\/shop_images\/clothingric_2x_5adc46eb-fe32-4786-8dc3-26aab9e20411.png",
+              "client_description": "Our Client Logo"
+            }
+          }
+        },
+        "block_order": [
+          "1650189085af907bf8-0",
+          "1650189085af907bf8-1",
+          "1650189085af907bf8-2",
+          "1650189085af907bf8-3"
+        ],
+        "settings": {
+          "title": "Our Clients",
+          "hide_rule": true,
+          "color_background": "#dfdfdf"
+        }
+      },
+      "16501911188e880f21": {
+        "type": "our-services",
+        "blocks": {
+          "16501911188e880f21-0": {
+            "type": "services",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Asset_2.png",
+              "image_url": "",
+              "text": "WOOD ENGRAVING"
+            }
+          },
+          "68f2cc5a-d398-4c3e-acfe-040735fb954e": {
+            "type": "services",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Asset_3.png",
+              "image_url": "",
+              "text": "METAL ENGRAVING"
+            }
+          },
+          "78269e56-19bb-497d-9e34-a5ef472fab3f": {
+            "type": "services",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Asset_4.png",
+              "image_url": "",
+              "text": "METAL BUSINESS CARD ENGRAVING"
+            }
+          },
+          "3a5e9e8c-c39a-45b3-a84b-cc71eb9874f9": {
+            "type": "services",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Asset_5.png",
+              "image_url": "",
+              "text": "WOOD MAP ENGRAVING"
+            }
+          }
+        },
+        "block_order": [
+          "16501911188e880f21-0",
+          "68f2cc5a-d398-4c3e-acfe-040735fb954e",
+          "78269e56-19bb-497d-9e34-a5ef472fab3f",
+          "3a5e9e8c-c39a-45b3-a84b-cc71eb9874f9"
+        ],
+        "settings": {
+          "title": "Our Services",
+          "hide_rule": true,
+          "color_background": "#f7f7f7",
+          "button_label": "",
+          "button_link": "",
+          "color_button_label": "#ffffff",
+          "color_button_background": "#000000"
+        }
+      },
+      "footer-v2": {
+        "type": "footer-v2",
+        "settings": {
+          "show_payment_icons": true,
+          "logo": "shopify:\/\/shop_images\/uzulabs_final_logo_copy.png",
+          "logo_max_width": 155,
+          "footer_link_list": "footer",
+          "help_title": "Need help?",
+          "help_text": "Click here to contact us",
+          "help_url": "shopify:\/\/pages\/contact-us",
+          "color_text": "#ffffff",
+          "color_background": "#000000",
+          "text_bottom": ""
+        }
+      },
+      "collection-template-v2": {
+        "type": "collection-template-v2",
+        "settings": {
+          "navigation_text": "Shop by category",
+          "navigation_menu": "new-menu-07-05-22",
+          "navigation_search": true
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical"
+        }
+      },
+      "list-collections-template-v2": {
+        "type": "list-collections-template-v2",
+        "settings": {
+          "navigation_text": "Shop by category",
+          "navigation_menu": "new-menu-07-05-22",
+          "navigation_search": true
+        }
       }
     },
     "content_for_index": [
       "slideshow",
-      "1496177901425",
-      "featured-products",
-      "newsletter",
-      "1496078102297",
-      "1494860348200",
-      "1494894035034"
+      "164958441933486d84",
+      "164959154722327c1d",
+      "1649692789965aa036",
+      "164978037918fdc411",
+      "1650189085af907bf8",
+      "16501911188e880f21",
+      "1649599656e928c9c7"
     ]
   },
   "presets": {
